@@ -2,6 +2,8 @@ package com.learning.swing.entity;
 
 import com.learning.swing.utils.ID;
 
+import java.awt.*;
+
 public abstract class GameObject {
 
     protected int x, y;
@@ -15,7 +17,7 @@ public abstract class GameObject {
     }
 
     public abstract void tick();
-    public abstract void render();
+    public abstract void render(Graphics g);
 
     public int getX() {
         return x;

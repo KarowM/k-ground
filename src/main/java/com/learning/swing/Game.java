@@ -1,9 +1,12 @@
 package com.learning.swing;
 
+import com.learning.swing.entity.Player;
 import com.learning.swing.graphics.Window;
+import com.learning.swing.utils.ID;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.util.Random;
 
 public class Game extends Canvas implements Runnable {
 
@@ -12,9 +15,17 @@ public class Game extends Canvas implements Runnable {
     private static final int WIDTH = 1024, HEIGHT = 576;
     private Thread thread;
     private boolean running = false;
+    private Handler handler;
+
+    private static final Random RANDOM = new Random();
 
     public Game() {
         new Window(HEIGHT, WIDTH, "Lets build a game!", this);
+        handler = new Handler();
+
+        for (int i = 0; i < 50; i++) {
+            handler.addObject(new Player(RANDOM.nextInt(WIDTH),RANDOM.nextInt(HEIGHT), ID.Player));
+        }
     }
 
     public synchronized void start() {
@@ -62,6 +73,7 @@ public class Game extends Canvas implements Runnable {
     }
 
     private void tick() {
+        handler.tick();
     }
 
     private void render() {
@@ -75,6 +87,8 @@ public class Game extends Canvas implements Runnable {
 
         g.setColor(Color.black);
         g.fillRect(0, 0, WIDTH, HEIGHT);
+
+        handler.render(g);
 
         g.dispose();
         bs.show();
