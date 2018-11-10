@@ -1,3 +1,5 @@
+package com.learning.swing;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,9 +9,12 @@ public class Window extends Canvas {
     public Window(int height, int width, String title, Game game) {
         JFrame frame = new JFrame(title);
 
-        frame.setPreferredSize(new Dimension(width, height));
+        frame.setUndecorated(true);
         frame.setMaximumSize(new Dimension(width, height));
         frame.setMinimumSize(new Dimension(width, height));
+        frame.pack();
+        Dimension actualSize = frame.getContentPane().getSize();
+        System.out.println("width: " + actualSize.width + ", height: " + actualSize.height);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
