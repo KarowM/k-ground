@@ -1,5 +1,7 @@
 package com.learning.swing;
 
+import com.learning.swing.graphics.Window;
+
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 

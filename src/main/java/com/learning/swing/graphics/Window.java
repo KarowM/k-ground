@@ -1,4 +1,6 @@
-package com.learning.swing;
+package com.learning.swing.graphics;
+
+import com.learning.swing.Game;
 
 import javax.swing.*;
 import java.awt.*;
