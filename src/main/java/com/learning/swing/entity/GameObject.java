@@ -58,4 +58,8 @@ public abstract class GameObject {
     public void setId(ID id) {
         this.id = id;
     }
+
+    public void goUp() {
+        y--;
+    }
 }
