@@ -2,11 +2,11 @@ package com.learning.swing;
 
 import com.learning.swing.entity.Player;
 import com.learning.swing.graphics.Window;
+import com.learning.swing.input.KeyInput;
 import com.learning.swing.utils.ID;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.util.Random;
 
 public class Game extends Canvas implements Runnable {
 
@@ -17,15 +17,13 @@ public class Game extends Canvas implements Runnable {
     private boolean running = false;
     private Handler handler;
 
-    private static final Random RANDOM = new Random();
-
     public Game() {
-        new Window(HEIGHT, WIDTH, "Lets build a game!", this);
         handler = new Handler();
+        this.addKeyListener(new KeyInput(handler));
 
-        for (int i = 0; i < 50; i++) {
-            handler.addObject(new Player(RANDOM.nextInt(WIDTH),RANDOM.nextInt(HEIGHT), ID.Player));
-        }
+        new Window(HEIGHT, WIDTH, "Lets build a game!", this);
+
+        handler.addObject(new Player(WIDTH/2-32, HEIGHT/2-32, ID.Player));
     }
 
     public synchronized void start() {
@@ -65,7 +63,7 @@ public class Game extends Canvas implements Runnable {
 
             if (System.currentTimeMillis() - timer > 1000) {
                 timer += 1000;
-                System.out.println("FPS: " + frames);
+                //System.out.println("FPS: " + frames);
                 frames = 0;
             }
         }
@@ -82,7 +80,6 @@ public class Game extends Canvas implements Runnable {
             this.createBufferStrategy(3);
             return;
         }
-
         Graphics g = bs.getDrawGraphics();
 
         g.setColor(Color.black);

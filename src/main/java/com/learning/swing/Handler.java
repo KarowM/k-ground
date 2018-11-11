@@ -4,12 +4,10 @@ import com.learning.swing.entity.GameObject;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 
 public class Handler {
-    List<GameObject> objects = new ArrayList<GameObject>();
+    public List<GameObject> objects = new ArrayList<GameObject>();
 
     public void tick() {
         int size = objects.size();
