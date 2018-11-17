@@ -39,6 +39,8 @@ public class KeyInput extends KeyAdapter {
             rP = true;
             player.setVelX(5);
         }
+
+        if (key == KeyEvent.VK_ESCAPE) System.exit(1);
     }
 
     @Override
