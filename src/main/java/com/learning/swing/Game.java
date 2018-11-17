@@ -2,6 +2,7 @@ package com.learning.swing;
 
 import com.learning.swing.entity.BasicEnemy;
 import com.learning.swing.entity.Player;
+import com.learning.swing.graphics.HUD;
 import com.learning.swing.graphics.Window;
 import com.learning.swing.input.KeyInput;
 import com.learning.swing.utils.ID;
@@ -18,6 +19,7 @@ public class Game extends Canvas implements Runnable {
     private Thread thread;
     private boolean running = false;
     private Handler handler;
+    private HUD hud;
 
     Random r = new Random();
 
@@ -25,6 +27,8 @@ public class Game extends Canvas implements Runnable {
         handler = new Handler();
         handler.addPlayer(new Player(WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.Player));
         handler.addObject(new BasicEnemy(WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.BasicEnemy));
+
+        hud = new HUD();
 
         this.addKeyListener(new KeyInput(handler));
 
@@ -48,6 +52,7 @@ public class Game extends Canvas implements Runnable {
     }
 
     public void run() {
+        this.requestFocus();
         long lastTime = System.nanoTime();
         double amountOfTicks = 60.0;
         double ns = 1000000000 / amountOfTicks;
@@ -78,6 +83,7 @@ public class Game extends Canvas implements Runnable {
 
     private void tick() {
         handler.tick();
+        hud.tick();
     }
 
     private void render() {
@@ -92,6 +98,7 @@ public class Game extends Canvas implements Runnable {
         g.fillRect(0, 0, WIDTH, HEIGHT);
 
         handler.render(g);
+        hud.render(g);
 
         g.dispose();
         bs.show();
