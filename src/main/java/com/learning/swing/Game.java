@@ -1,5 +1,6 @@
 package com.learning.swing;
 
+import com.learning.swing.entity.BasicEnemy;
 import com.learning.swing.entity.Player;
 import com.learning.swing.graphics.Window;
 import com.learning.swing.input.KeyInput;
@@ -7,19 +8,23 @@ import com.learning.swing.utils.ID;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.util.Random;
 
 public class Game extends Canvas implements Runnable {
 
     private static final long serialVersionUID = 190065682132863975L;
 
-    private static final int WIDTH = 1024, HEIGHT = 576;
+    public static final int WIDTH = 1024, HEIGHT = 576;
     private Thread thread;
     private boolean running = false;
     private Handler handler;
 
+    Random r = new Random();
+
     public Game() {
         handler = new Handler();
-        handler.addPlayer(new Player(WIDTH/2-32, HEIGHT/2-32, ID.Player));
+        handler.addPlayer(new Player(WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.Player));
+        handler.addObject(new BasicEnemy(WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.BasicEnemy));
 
         this.addKeyListener(new KeyInput(handler));
 

@@ -1,5 +1,6 @@
 package com.learning.swing.entity;
 
+import com.learning.swing.Game;
 import com.learning.swing.utils.ID;
 
 import java.awt.*;
@@ -11,8 +12,8 @@ public class Player extends GameObject {
     }
 
     public void tick() {
-        x += velX;
-        y += velY;
+        x = clamp(x + velX, 0, Game.WIDTH - 32);
+        y = clamp(y + velY, 0, Game.HEIGHT - 32);
     }
 
     public void render(Graphics g) {
@@ -20,4 +21,13 @@ public class Player extends GameObject {
         g.fillRect(x, y, 32, 32);
     }
 
+    private static int clamp(int var, int min, int max) {
+        if (var >= max) {
+            return max;
+        }
+        if (var <= min) {
+            return min;
+        }
+        return var;
+    }
 }
