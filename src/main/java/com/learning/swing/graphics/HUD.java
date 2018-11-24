@@ -6,12 +6,12 @@ import java.awt.*;
 
 public class HUD {
     public static final int HEALTH_MAX = 100;
-    public static int health = HEALTH_MAX;
+    public static int currentHealth = HEALTH_MAX;
 
     public void tick() {
-        health--;
+        //currentHealth--;
 
-        health = GameObject.clamp(health, 0, 100);
+        currentHealth = GameObject.clamp(currentHealth, 0, 100);
     }
 
     public void render(Graphics g) {
@@ -19,9 +19,9 @@ public class HUD {
         g.fillRect(15, 15, 2*HEALTH_MAX, 32);
 
         g.setColor(Color.GREEN);
-        g.fillRect(15, 15, health * 2, 32);
+        g.fillRect(15, 15, currentHealth * 2, 32);
 
         g.setColor(Color.WHITE);
-        g.drawRect(15, 15, health * 2, 32);
+        g.drawRect(15, 15, currentHealth * 2, 32);
     }
 }

@@ -16,6 +16,10 @@ public class BasicEnemy extends GameObject {
         velY = 5;
     }
 
+    public Rectangle getBounds() {
+        return new Rectangle(x, y, ENEMY_SIZE, ENEMY_SIZE);
+    }
+
     public void tick() {
         x += velX;
         y += velY;
