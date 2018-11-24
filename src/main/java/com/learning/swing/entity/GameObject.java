@@ -16,6 +16,16 @@ public abstract class GameObject {
         this.id = id;
     }
 
+    public static int clamp(int var, int min, int max) {
+        if (var >= max) {
+            return max;
+        }
+        if (var <= min) {
+            return min;
+        }
+        return var;
+    }
+
     public abstract void tick();
     public abstract void render(Graphics g);
 

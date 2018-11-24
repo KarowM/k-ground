@@ -22,14 +22,4 @@ public class Player extends GameObject {
         g.setColor(Color.WHITE);
         g.fillRect(x, y, PLAYER_SIZE, PLAYER_SIZE);
     }
-
-    private static int clamp(int var, int min, int max) {
-        if (var >= max) {
-            return max;
-        }
-        if (var <= min) {
-            return min;
-        }
-        return var;
-    }
 }

@@ -52,7 +52,7 @@ public class Game extends Canvas implements Runnable {
     }
 
     public void run() {
-        this.requestFocus();
+        this.requestFocus(); // key board works without clicking on it
         long lastTime = System.nanoTime();
         double amountOfTicks = 60.0;
         double ns = 1000000000 / amountOfTicks;
