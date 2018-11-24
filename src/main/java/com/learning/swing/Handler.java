@@ -2,6 +2,8 @@ package com.learning.swing;
 
 import com.learning.swing.entity.GameObject;
 import com.learning.swing.entity.Player;
+import com.learning.swing.graphics.HUD;
+import com.learning.swing.utils.ID;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -17,6 +19,8 @@ public class Handler {
         for (int i = 0; i < size; i++) {
             objects.get(i).tick();
         }
+
+        checkForCollisions();
     }
 
     public void render(Graphics g) {
@@ -25,6 +29,18 @@ public class Handler {
             GameObject tempObject = objects.get(i);
 
             tempObject.render(g);
+        }
+    }
+
+    private void checkForCollisions() {
+        for (int i = 0; i < objects.size(); i++) {
+            GameObject tempObj = objects.get(i);
+
+            if (tempObj.getId() == ID.BasicEnemy) {
+                if (player.getBounds().intersects(tempObj.getBounds())) {
+                    HUD.currentHealth -= 1;
+                }
+            }
         }
     }
 
