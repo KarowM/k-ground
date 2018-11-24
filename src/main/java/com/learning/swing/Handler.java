@@ -15,8 +15,7 @@ public class Handler {
 
     public void tick() {
         player.tick();
-        int size = objects.size();
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < objects.size(); i++) {
             objects.get(i).tick();
         }
 
