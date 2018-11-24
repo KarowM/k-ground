@@ -1,6 +1,5 @@
 package com.learning.swing.graphics;
 
-import com.learning.swing.Game;
 import com.learning.swing.entity.GameObject;
 
 import java.awt.*;
