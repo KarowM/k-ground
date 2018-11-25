@@ -1,7 +1,6 @@
 package com.learning.swing.entity;
 
 import com.learning.swing.Game;
-import com.learning.swing.Handler;
 import com.learning.swing.utils.ID;
 
 import java.awt.*;
@@ -9,14 +8,14 @@ import java.awt.*;
 public class BasicEnemy extends GameObject {
 
     public static final int ENEMY_SIZE = 16;
-    private Handler handler;
+    private Spawner spawner;
 
-    public BasicEnemy(int x, int y, ID id, Handler handler) {
+    public BasicEnemy(int x, int y, ID id, Spawner spawner) {
         super(x, y, id);
-        this.handler = handler;
+        this.spawner = spawner;
 
-        velX = 5;
-        velY = 5;
+        velX = 3;
+        velY = 3;
     }
 
     public Rectangle getBounds() {
@@ -34,7 +33,7 @@ public class BasicEnemy extends GameObject {
             velX *= -1;
         }
 
-        handler.addObject(new Trail(x, y, ID.Trail, Color.RED, ENEMY_SIZE, ENEMY_SIZE, 0.05, handler));
+        spawner.addObject(new Trail(x, y, ID.Trail, Color.RED, ENEMY_SIZE, ENEMY_SIZE, 0.05, spawner));
     }
 
     public void render(Graphics g) {

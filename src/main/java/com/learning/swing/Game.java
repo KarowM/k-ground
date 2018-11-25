@@ -1,16 +1,12 @@
 package com.learning.swing;
 
-import com.learning.swing.entity.BasicEnemy;
-import com.learning.swing.entity.Player;
 import com.learning.swing.entity.Spawner;
 import com.learning.swing.graphics.HUD;
 import com.learning.swing.graphics.Window;
 import com.learning.swing.input.KeyInput;
-import com.learning.swing.utils.ID;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.util.Random;
 
 public class Game extends Canvas implements Runnable {
 
@@ -24,11 +20,11 @@ public class Game extends Canvas implements Runnable {
 
     public Game() {
         handler = new Handler(new HUD());
-        spawner = new Spawner(handler);
+        spawner = new Spawner();
 
         handler.setSpawner(spawner);
 
-        this.addKeyListener(new KeyInput(handler));
+        this.addKeyListener(new KeyInput(spawner));
 
         new Window(HEIGHT, WIDTH, "Lets build a game!", this);
     }
