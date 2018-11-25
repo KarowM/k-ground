@@ -8,20 +8,33 @@ public class HUD {
     public static final int HEALTH_MAX = 100;
     public static int currentHealth = HEALTH_MAX;
 
-    public void tick() {
-        //currentHealth--;
+    private int greenValue = 255;
 
+    private int score = 0;
+    private int level = 1;
+
+    public void tick() {
         currentHealth = GameObject.clamp(currentHealth, 0, 100);
+        greenValue = GameObject.clamp(currentHealth * 2, 0, 255);
+
+        score++;
     }
 
     public void render(Graphics g) {
         g.setColor(Color.GRAY);
-        g.fillRect(15, 15, 2*HEALTH_MAX, 32);
+        g.fillRect(15, 15, 2 * HEALTH_MAX, 32);
 
-        g.setColor(Color.GREEN);
+        g.setColor(new Color(75, greenValue, 0));
         g.fillRect(15, 15, currentHealth * 2, 32);
 
         g.setColor(Color.WHITE);
         g.drawRect(15, 15, currentHealth * 2, 32);
+
+        g.drawString("Score: " + score, 10, 64);
+        g.drawString("Level: " + level, 10, 80);
+    }
+
+    public void incrementLevel() {
+        level++;
     }
 }

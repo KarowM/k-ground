@@ -43,7 +43,7 @@ public class Trail extends GameObject {
 
     private AlphaComposite makeTransparent(float alpha) {
         int type = AlphaComposite.SRC_OVER;
-        return(AlphaComposite.getInstance(type, alpha));
+        return (AlphaComposite.getInstance(type, alpha));
     }
 
     public Rectangle getBounds() {

@@ -2,6 +2,7 @@ package com.learning.swing;
 
 import com.learning.swing.entity.BasicEnemy;
 import com.learning.swing.entity.Player;
+import com.learning.swing.entity.Spawner;
 import com.learning.swing.graphics.HUD;
 import com.learning.swing.graphics.Window;
 import com.learning.swing.input.KeyInput;
@@ -20,20 +21,20 @@ public class Game extends Canvas implements Runnable {
     private boolean running = false;
     private Handler handler;
     private HUD hud;
+    private Spawner spawner;
 
     Random r = new Random();
 
     public Game() {
         handler = new Handler();
         handler.addPlayer(new Player(WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.Player));
-        handler.addObject(new BasicEnemy(WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.BasicEnemy, handler));
+        handler.addObject(new BasicEnemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.BasicEnemy, handler));
 
         hud = new HUD();
-
+        spawner = new Spawner(handler, hud);
         this.addKeyListener(new KeyInput(handler));
 
         new Window(HEIGHT, WIDTH, "Lets build a game!", this);
-
     }
 
     public synchronized void start() {
@@ -84,6 +85,7 @@ public class Game extends Canvas implements Runnable {
     private void tick() {
         handler.tick();
         hud.tick();
+        spawner.tick();
     }
 
     private void render() {

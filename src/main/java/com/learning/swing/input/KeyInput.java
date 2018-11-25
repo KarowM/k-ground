@@ -50,23 +50,35 @@ public class KeyInput extends KeyAdapter {
         Player player = handler.getPlayer();
         if (key == KeyEvent.VK_W) {
             uP = false;
-            if (dP) { player.setVelY(5); }
-            else { player.setVelY(0); }
+            if (dP) {
+                player.setVelY(5);
+            } else {
+                player.setVelY(0);
+            }
         }
         if (key == KeyEvent.VK_S) {
             dP = false;
-            if (uP) { player.setVelY(-5); }
-            else { player.setVelY(0); }
+            if (uP) {
+                player.setVelY(-5);
+            } else {
+                player.setVelY(0);
+            }
         }
         if (key == KeyEvent.VK_A) {
             lP = false;
-            if (rP) { player.setVelX(5); }
-            else { player.setVelX(0); }
+            if (rP) {
+                player.setVelX(5);
+            } else {
+                player.setVelX(0);
+            }
         }
         if (key == KeyEvent.VK_D) {
             rP = false;
-            if (lP) { player.setVelX(-5); }
-            else { player.setVelX(0); }
+            if (lP) {
+                player.setVelX(-5);
+            } else {
+                player.setVelX(0);
+            }
         }
     }
 }
