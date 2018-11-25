@@ -22,16 +22,11 @@ public class Game extends Canvas implements Runnable {
     private Handler handler;
     private Spawner spawner;
 
-    Random r = new Random();
-
     public Game() {
-        HUD hud = new HUD();
-        handler = new Handler(hud);
+        handler = new Handler(new HUD());
         spawner = new Spawner(handler);
-        handler.setSpawner(spawner);
 
-        spawner.createPlayer();
-        spawner.createNewBasicEnemy();
+        handler.setSpawner(spawner);
 
         this.addKeyListener(new KeyInput(handler));
 

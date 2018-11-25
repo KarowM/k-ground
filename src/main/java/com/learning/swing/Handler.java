@@ -17,6 +17,9 @@ public class Handler {
 
     public void setSpawner(Spawner spawner) {
         this.spawner = spawner;
+
+        spawner.createPlayer();
+        spawner.createNewBasicEnemy();
     }
 
     private Spawner spawner;

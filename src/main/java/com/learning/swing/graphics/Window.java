@@ -15,8 +15,6 @@ public class Window extends Canvas {
         frame.setMaximumSize(new Dimension(width, height));
         frame.setMinimumSize(new Dimension(width, height));
         frame.pack();
-        Dimension actualSize = frame.getContentPane().getSize();
-        System.out.println("width: " + actualSize.width + ", height: " + actualSize.height);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
