@@ -30,8 +30,8 @@ public class Game extends Canvas implements Runnable {
         spawner = new Spawner(handler);
         handler.setSpawner(spawner);
 
-        handler.addPlayer(new Player(WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.Player));
-        handler.addObject(new BasicEnemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.BasicEnemy, handler));
+        spawner.createPlayer();
+        spawner.createNewBasicEnemy();
 
         this.addKeyListener(new KeyInput(handler));
 

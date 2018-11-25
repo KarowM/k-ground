@@ -18,7 +18,11 @@ public class Spawner {
     public void tick() {
     }
 
+    public void createPlayer() {
+        handler.addPlayer(new Player(Game.WIDTH / 2 - 32, Game.HEIGHT / 2 - 32, ID.Player));
+    }
+
     public void createNewBasicEnemy() {
-        handler.addObject(new BasicEnemy(R.nextInt(Game.WIDTH), R.nextInt(Game.HEIGHT), ID.BasicEnemy, handler));
+        handler.addObject(new BasicEnemy(R.nextInt(Game.WIDTH) - BasicEnemy.ENEMY_SIZE, R.nextInt(Game.HEIGHT) - BasicEnemy.ENEMY_SIZE, ID.BasicEnemy, handler));
     }
 }
