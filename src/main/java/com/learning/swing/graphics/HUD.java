@@ -10,17 +10,12 @@ public class HUD {
 
     private int greenValue = 255;
 
-    private int score = 0;
-    private int level = 1;
-
     public void tick() {
         currentHealth = GameObject.clamp(currentHealth, 0, 100);
         greenValue = GameObject.clamp(currentHealth * 2, 0, 255);
-
-        score++;
     }
 
-    public void render(Graphics g) {
+    public void render(Graphics g, int score, int level) {
         g.setColor(Color.GRAY);
         g.fillRect(15, 15, 2 * HEALTH_MAX, 32);
 
@@ -32,9 +27,5 @@ public class HUD {
 
         g.drawString("Score: " + score, 10, 64);
         g.drawString("Level: " + level, 10, 80);
-    }
-
-    public void incrementLevel() {
-        level++;
     }
 }

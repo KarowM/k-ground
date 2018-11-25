@@ -2,6 +2,7 @@ package com.learning.swing;
 
 import com.learning.swing.entity.GameObject;
 import com.learning.swing.entity.Player;
+import com.learning.swing.entity.Spawner;
 import com.learning.swing.graphics.HUD;
 import com.learning.swing.utils.ID;
 
@@ -14,11 +15,28 @@ public class Handler {
     private Player player;
     private HUD hud;
 
+    public void setSpawner(Spawner spawner) {
+        this.spawner = spawner;
+    }
+
+    private Spawner spawner;
+
+    private int score = 0;
+    private int level = 1;
+
     public Handler(HUD hud) {
         this.hud = hud;
     }
 
     public void tick() {
+        score++;
+
+        if (score % 100 == 0) {
+            incrementLevel();
+
+            spawner.createNewBasicEnemy();
+        }
+
         player.tick();
         for (int i = 0; i < objects.size(); i++) {
             objects.get(i).tick();
@@ -29,6 +47,10 @@ public class Handler {
         hud.tick();
     }
 
+    public void incrementLevel() {
+        level++;
+    }
+
     public void render(Graphics g) {
         player.render(g);
         for (int i = 0; i < objects.size(); i++) {
@@ -37,7 +59,7 @@ public class Handler {
             tempObject.render(g);
         }
 
-        hud.render(g);
+        hud.render(g, score, level);
     }
 
     private void checkForCollisions() {
