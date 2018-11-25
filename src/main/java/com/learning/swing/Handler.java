@@ -12,11 +12,8 @@ public class Handler {
     private int score = 0;
     private int level = 1;
 
-    public Handler(HUD hud) {
+    public Handler(HUD hud, Spawner spawner) {
         this.hud = hud;
-    }
-
-    public void setSpawner(Spawner spawner) {
         this.spawner = spawner;
 
         spawner.createPlayer();

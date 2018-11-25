@@ -16,13 +16,10 @@ public class Game extends Canvas implements Runnable {
     private Thread thread;
     private boolean running = false;
     private Handler handler;
-    private Spawner spawner;
 
     public Game() {
-        handler = new Handler(new HUD());
-        spawner = new Spawner();
-
-        handler.setSpawner(spawner);
+        Spawner spawner = new Spawner();
+        handler = new Handler(new HUD(), spawner);
 
         this.addKeyListener(new KeyInput(spawner));
 
@@ -76,7 +73,6 @@ public class Game extends Canvas implements Runnable {
 
     private void tick() {
         handler.tick();
-        spawner.tick();
     }
 
     private void render() {

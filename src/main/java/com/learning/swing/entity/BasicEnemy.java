@@ -14,8 +14,8 @@ public class BasicEnemy extends GameObject {
         super(x, y, id);
         this.spawner = spawner;
 
-        velX = 3;
-        velY = 3;
+        velX = 5;
+        velY = 5;
     }
 
     public Rectangle getBounds() {

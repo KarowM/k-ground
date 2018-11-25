@@ -1,7 +1,6 @@
 package com.learning.swing.entity;
 
 import com.learning.swing.Game;
-import com.learning.swing.Handler;
 import com.learning.swing.graphics.HUD;
 import com.learning.swing.utils.ID;
 
