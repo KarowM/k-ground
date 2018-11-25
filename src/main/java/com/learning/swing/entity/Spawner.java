@@ -44,7 +44,7 @@ public class Spawner {
 
             if (tempObj.getId() == ID.BasicEnemy) {
                 if (player.getBounds().intersects(tempObj.getBounds())) {
-                    HUD.currentHealth -= 1;
+                    HUD.decerementHealth();
                 }
             }
         }
