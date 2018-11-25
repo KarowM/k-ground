@@ -15,8 +15,10 @@ public class Spawner {
 
     private Player player;
     private List<GameObject> objects;
+    private HUD hud;
 
-    public Spawner() {
+    public Spawner(HUD hud) {
+        this.hud = hud;
         objects = new ArrayList<GameObject>();
     }
 
@@ -32,9 +34,7 @@ public class Spawner {
     public void render(Graphics g) {
         player.render(g);
         for (int i = 0; i < objects.size(); i++) {
-            GameObject tempObject = objects.get(i);
-
-            tempObject.render(g);
+            objects.get(i).render(g);
         }
     }
 
@@ -44,7 +44,7 @@ public class Spawner {
 
             if (tempObj.getId() == ID.BasicEnemy) {
                 if (player.getBounds().intersects(tempObj.getBounds())) {
-                    HUD.decerementHealth();
+                    hud.decerementHealth();
                 }
             }
         }

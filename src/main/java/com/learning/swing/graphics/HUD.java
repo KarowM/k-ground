@@ -5,12 +5,12 @@ import com.learning.swing.entity.GameObject;
 import java.awt.*;
 
 public class HUD {
-    private static final int HEALTH_MAX = 100;
-    private static int currentHealth = HEALTH_MAX;
+    private final int HEALTH_MAX = 100;
+    private int currentHealth = HEALTH_MAX;
 
     private int greenValue = 255;
 
-    public static void decerementHealth() {
+    public void decerementHealth() {
         currentHealth--;
     }
 
