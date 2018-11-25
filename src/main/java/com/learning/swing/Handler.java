@@ -12,6 +12,11 @@ import java.util.List;
 public class Handler {
     public List<GameObject> objects = new ArrayList<GameObject>();
     private Player player;
+    private HUD hud;
+
+    public Handler(HUD hud) {
+        this.hud = hud;
+    }
 
     public void tick() {
         player.tick();
@@ -20,6 +25,8 @@ public class Handler {
         }
 
         checkForCollisions();
+
+        hud.tick();
     }
 
     public void render(Graphics g) {
@@ -29,6 +36,8 @@ public class Handler {
 
             tempObject.render(g);
         }
+
+        hud.render(g);
     }
 
     private void checkForCollisions() {

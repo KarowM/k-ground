@@ -27,7 +27,11 @@ public class Spawner {
             scoreKeep = 0;
             hud.incrementLevel();
 
-            handler.addObject(new BasicEnemy(R.nextInt(Game.WIDTH), R.nextInt(Game.HEIGHT), ID.BasicEnemy, handler));
+            createNewBasicEnemy();
         }
+    }
+
+    private void createNewBasicEnemy() {
+        handler.addObject(new BasicEnemy(R.nextInt(Game.WIDTH), R.nextInt(Game.HEIGHT), ID.BasicEnemy, handler));
     }
 }
