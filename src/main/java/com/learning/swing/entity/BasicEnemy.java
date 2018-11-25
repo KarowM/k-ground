@@ -23,13 +23,13 @@ public class BasicEnemy extends GameObject {
     }
 
     public void tick() {
-        x += velX;
-        y += velY;
+        x = clamp(x + velX, 0, Game.WIDTH - ENEMY_SIZE);
+        y = clamp(y + velY, 0, Game.HEIGHT - ENEMY_SIZE);
 
-        if (y <= 0 || y > Game.HEIGHT - ENEMY_SIZE) {
+        if (y == 0 || y == Game.HEIGHT - ENEMY_SIZE) {
             velY *= -1;
         }
-        if (x <= 0 || x > Game.WIDTH - ENEMY_SIZE) {
+        if (x == 0 || x == Game.WIDTH - ENEMY_SIZE) {
             velX *= -1;
         }
 
