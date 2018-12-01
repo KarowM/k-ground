@@ -23,24 +23,26 @@ public class KeyInput extends KeyAdapter {
         int key = e.getKeyCode();
 
         Player player = spawner.getPlayer();
-        if (key == KeyEvent.VK_W) {
-            uP = true;
-            player.setVelY(-5);
+        switch (key) {
+            case KeyEvent.VK_W:
+                uP = true;
+                player.setVelY(-5);
+                break;
+            case KeyEvent.VK_S:
+                dP = true;
+                player.setVelY(5);
+                break;
+            case KeyEvent.VK_A:
+                lP = true;
+                player.setVelX(-5);
+                break;
+            case KeyEvent.VK_D:
+                rP = true;
+                player.setVelX(5);
+                break;
+            case KeyEvent.VK_ESCAPE:
+                System.exit(1);
         }
-        if (key == KeyEvent.VK_S) {
-            dP = true;
-            player.setVelY(5);
-        }
-        if (key == KeyEvent.VK_A) {
-            lP = true;
-            player.setVelX(-5);
-        }
-        if (key == KeyEvent.VK_D) {
-            rP = true;
-            player.setVelX(5);
-        }
-
-        if (key == KeyEvent.VK_ESCAPE) System.exit(1);
     }
 
     @Override
