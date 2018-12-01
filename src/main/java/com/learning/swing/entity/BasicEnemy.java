@@ -19,7 +19,7 @@ public class BasicEnemy extends GameObject {
     }
 
     public Rectangle getBounds() {
-        return new Rectangle(x, y, ENEMY_SIZE, ENEMY_SIZE);
+        return new Rectangle((int) x, (int) y, ENEMY_SIZE, ENEMY_SIZE);
     }
 
     public void tick() {
@@ -33,11 +33,11 @@ public class BasicEnemy extends GameObject {
             velX *= -1;
         }
 
-        spawner.addObject(new Trail(x, y, ID.Trail, Color.RED, ENEMY_SIZE, ENEMY_SIZE, 0.05, spawner));
+        spawner.addObject(new Trail((int) x, (int) y, ID.Trail, Color.RED, ENEMY_SIZE, ENEMY_SIZE, 0.05, spawner));
     }
 
     public void render(Graphics g) {
         g.setColor(Color.RED);
-        g.fillRect(x, y, ENEMY_SIZE, ENEMY_SIZE);
+        g.fillRect((int) x, (int) y, ENEMY_SIZE, ENEMY_SIZE);
     }
 }

@@ -17,38 +17,25 @@ public class SmartEnemy extends GameObject {
     }
 
     public Rectangle getBounds() {
-        return new Rectangle(x, y, ENEMY_SIZE, ENEMY_SIZE);
+        return new Rectangle((int) x, (int) y, ENEMY_SIZE, ENEMY_SIZE);
     }
 
     public void tick() {
         x += velX;
         y += velY;
 
-        int playerX = player.getX();
-        int playerY = player.getY();
+        double diffX = x - player.getX() - ENEMY_SIZE/2;
+        double diffY = y - player.getY() - ENEMY_SIZE/2;
 
-        if (x > playerX && y > playerY) {
-            velX = -2;
-            velY = -2;
-        }
-        if (x > playerX && y < playerY) {
-            velX = -2;
-            velY = 2;
-        }
-        if (x < playerX && y < playerY) {
-            velX = 2;
-            velY = 2;
-        }
-        if (x < playerX && y > playerY) {
-            velX = 2;
-            velY = -2;
-        }
+        double distance = Math.sqrt((x - player.getX()) * (x - player.getX()) + (y - player.getY()) * (y - player.getY()));
+        velX = ((-1.0 / distance) * diffX);
+        velY = ((-1.0 / distance) * diffY);
 
-        spawner.addObject(new Trail(x, y, ID.Trail, Color.BLUE, ENEMY_SIZE, ENEMY_SIZE, 0.05, spawner));
+        spawner.addObject(new Trail((int) x, (int) y, ID.Trail, Color.BLUE, ENEMY_SIZE, ENEMY_SIZE, 0.05, spawner));
     }
 
     public void render(Graphics g) {
         g.setColor(Color.BLUE);
-        g.fillRect(x, y, ENEMY_SIZE, ENEMY_SIZE);
+        g.fillRect((int) x, (int) y, ENEMY_SIZE, ENEMY_SIZE);
     }
 }

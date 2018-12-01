@@ -17,7 +17,6 @@ public class Handler {
         this.spawner = spawner;
 
         spawner.createPlayer();
-        spawner.createNewBasicEnemy();
     }
 
     public void tick() {
