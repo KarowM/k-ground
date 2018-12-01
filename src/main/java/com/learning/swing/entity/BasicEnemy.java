@@ -33,7 +33,7 @@ public class BasicEnemy extends GameObject {
             velX *= -1;
         }
 
-        spawner.addObject(new Trail((int) x, (int) y, ID.Trail, Color.RED, ENEMY_SIZE, ENEMY_SIZE, 0.05, spawner));
+        spawner.addObject(new Trail(x, y, ID.Trail, Color.RED, ENEMY_SIZE, ENEMY_SIZE, 0.05, spawner));
     }
 
     public void render(Graphics g) {

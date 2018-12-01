@@ -12,7 +12,7 @@ public class Trail extends GameObject {
     int width, height;
     double life;
 
-    public Trail(int x, int y, ID id, Color color, int width, int height, double life, Spawner spawner) {
+    public Trail(double x, double y, ID id, Color color, int width, int height, double life, Spawner spawner) {
         super(x, y, id);
         this.color = color;
         this.spawner = spawner;

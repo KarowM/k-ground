@@ -31,7 +31,7 @@ public class SmartEnemy extends GameObject {
         velX = ((-1.0 / distance) * diffX);
         velY = ((-1.0 / distance) * diffY);
 
-        spawner.addObject(new Trail((int) x, (int) y, ID.Trail, Color.BLUE, ENEMY_SIZE, ENEMY_SIZE, 0.05, spawner));
+        spawner.addObject(new Trail(x, y, ID.Trail, Color.BLUE, ENEMY_SIZE, ENEMY_SIZE, 0.05, spawner));
     }
 
     public void render(Graphics g) {
