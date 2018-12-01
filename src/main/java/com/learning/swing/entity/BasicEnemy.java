@@ -19,7 +19,7 @@ public class BasicEnemy extends GameObject {
     }
 
     public Rectangle getBounds() {
-        return new Rectangle(x, y, ENEMY_SIZE, ENEMY_SIZE);
+        return new Rectangle((int) x, (int) y, ENEMY_SIZE, ENEMY_SIZE);
     }
 
     public void tick() {
@@ -38,6 +38,6 @@ public class BasicEnemy extends GameObject {
 
     public void render(Graphics g) {
         g.setColor(Color.RED);
-        g.fillRect(x, y, ENEMY_SIZE, ENEMY_SIZE);
+        g.fillRect((int) x, (int) y, ENEMY_SIZE, ENEMY_SIZE);
     }
 }

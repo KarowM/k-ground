@@ -42,7 +42,7 @@ public class Spawner {
         for (int i = 0; i < objects.size(); i++) {
             GameObject tempObj = objects.get(i);
 
-            if (tempObj.getId() == ID.BasicEnemy) {
+            if (tempObj.getId() != ID.Trail) {
                 if (player.getBounds().intersects(tempObj.getBounds())) {
                     hud.decerementHealth();
                 }
@@ -68,5 +68,9 @@ public class Spawner {
 
     public void addObject(GameObject object) {
         objects.add(object);
+    }
+
+    public void createNewSmartEnemy() {
+        objects.add(new SmartEnemy(R.nextInt(Game.WIDTH), R.nextInt(Game.HEIGHT), ID.SmartEnemy, this));
     }
 }

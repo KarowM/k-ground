@@ -6,9 +6,9 @@ import java.awt.*;
 
 public class HUD {
     private final int HEALTH_MAX = 100;
-    private int currentHealth = HEALTH_MAX;
+    private double currentHealth = HEALTH_MAX;
 
-    private int greenValue = 255;
+    private double greenValue = 255;
 
     public void decerementHealth() {
         currentHealth--;
@@ -23,11 +23,11 @@ public class HUD {
         g.setColor(Color.GRAY);
         g.fillRect(15, 15, 2 * HEALTH_MAX, 32);
 
-        g.setColor(new Color(75, greenValue, 0));
-        g.fillRect(15, 15, currentHealth * 2, 32);
+        g.setColor(new Color(75, (int) greenValue, 0));
+        g.fillRect(15, 15, (int) currentHealth * 2, 32);
 
         g.setColor(Color.WHITE);
-        g.drawRect(15, 15, currentHealth * 2, 32);
+        g.drawRect(15, 15, (int) currentHealth * 2, 32);
 
         g.drawString("Score: " + score, 10, 64);
         g.drawString("Level: " + level, 10, 80);

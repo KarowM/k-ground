@@ -9,12 +9,12 @@ public class Player extends GameObject {
 
     public static final int PLAYER_SIZE = 32;
 
-    public Player(int x, int y, ID id) {
+    public Player(double x, double y, ID id) {
         super(x, y, id);
     }
 
     public Rectangle getBounds() {
-        return new Rectangle(x, y, 32, 32);
+        return new Rectangle((int) x, (int) y, 32, 32);
     }
 
     public void tick() {
@@ -24,6 +24,6 @@ public class Player extends GameObject {
 
     public void render(Graphics g) {
         g.setColor(Color.WHITE);
-        g.fillRect(x, y, PLAYER_SIZE, PLAYER_SIZE);
+        g.fillRect((int) x, (int) y, PLAYER_SIZE, PLAYER_SIZE);
     }
 }

@@ -17,7 +17,6 @@ public class Handler {
         this.spawner = spawner;
 
         spawner.createPlayer();
-        spawner.createNewBasicEnemy();
     }
 
     public void tick() {
@@ -27,6 +26,9 @@ public class Handler {
             incrementLevel();
 
             spawner.createNewBasicEnemy();
+        }
+        if (score == 500) {
+            spawner.createNewSmartEnemy();
         }
 
         spawner.tick();
