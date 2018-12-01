@@ -1,16 +1,12 @@
 package com.learning.swing;
 
-import com.learning.swing.entity.BasicEnemy;
-import com.learning.swing.entity.Player;
 import com.learning.swing.entity.Spawner;
 import com.learning.swing.graphics.HUD;
 import com.learning.swing.graphics.Window;
 import com.learning.swing.input.KeyInput;
-import com.learning.swing.utils.ID;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.util.Random;
 
 public class Game extends Canvas implements Runnable {
 
@@ -20,19 +16,13 @@ public class Game extends Canvas implements Runnable {
     private Thread thread;
     private boolean running = false;
     private Handler handler;
-    private HUD hud;
-    private Spawner spawner;
-
-    Random r = new Random();
 
     public Game() {
-        handler = new Handler();
-        handler.addPlayer(new Player(WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.Player));
-        handler.addObject(new BasicEnemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.BasicEnemy, handler));
+        HUD hud = new HUD();
+        Spawner spawner = new Spawner(hud);
+        handler = new Handler(hud, spawner);
 
-        hud = new HUD();
-        spawner = new Spawner(handler, hud);
-        this.addKeyListener(new KeyInput(handler));
+        this.addKeyListener(new KeyInput(spawner));
 
         new Window(HEIGHT, WIDTH, "Lets build a game!", this);
     }
@@ -84,8 +74,6 @@ public class Game extends Canvas implements Runnable {
 
     private void tick() {
         handler.tick();
-        hud.tick();
-        spawner.tick();
     }
 
     private void render() {
@@ -100,7 +88,6 @@ public class Game extends Canvas implements Runnable {
         g.fillRect(0, 0, WIDTH, HEIGHT);
 
         handler.render(g);
-        hud.render(g);
 
         g.dispose();
         bs.show();

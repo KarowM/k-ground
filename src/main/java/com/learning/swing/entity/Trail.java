@@ -1,6 +1,5 @@
 package com.learning.swing.entity;
 
-import com.learning.swing.Handler;
 import com.learning.swing.utils.ID;
 
 import java.awt.*;
@@ -9,14 +8,14 @@ public class Trail extends GameObject {
 
     private float alpha = 1;
     private Color color;
-    private Handler handler;
+    private Spawner spawner;
     int width, height;
     double life;
 
-    public Trail(int x, int y, ID id, Color color, int width, int height, double life, Handler handler) {
+    public Trail(int x, int y, ID id, Color color, int width, int height, double life, Spawner spawner) {
         super(x, y, id);
         this.color = color;
-        this.handler = handler;
+        this.spawner = spawner;
         this.width = width;
         this.height = height;
         this.life = life;
@@ -26,7 +25,7 @@ public class Trail extends GameObject {
         if (alpha > life) {
             alpha -= (life - 0.0001f);
         } else {
-            handler.removeObject(this);
+            spawner.removeObject(this);
         }
     }
 

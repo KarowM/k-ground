@@ -1,28 +1,28 @@
 package com.learning.swing.input;
 
-import com.learning.swing.Handler;
 import com.learning.swing.entity.Player;
+import com.learning.swing.entity.Spawner;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class KeyInput extends KeyAdapter {
 
-    private Handler handler;
+    private Spawner spawner;
     private boolean uP = false;
     private boolean dP = false;
     private boolean lP = false;
     private boolean rP = false;
 
-    public KeyInput(Handler handler) {
-        this.handler = handler;
+    public KeyInput(Spawner spawner) {
+        this.spawner = spawner;
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
 
-        Player player = handler.getPlayer();
+        Player player = spawner.getPlayer();
         if (key == KeyEvent.VK_W) {
             uP = true;
             player.setVelY(-5);
@@ -47,7 +47,7 @@ public class KeyInput extends KeyAdapter {
     public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
 
-        Player player = handler.getPlayer();
+        Player player = spawner.getPlayer();
         if (key == KeyEvent.VK_W) {
             uP = false;
             if (dP) {

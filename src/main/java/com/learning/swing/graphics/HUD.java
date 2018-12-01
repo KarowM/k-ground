@@ -5,22 +5,21 @@ import com.learning.swing.entity.GameObject;
 import java.awt.*;
 
 public class HUD {
-    public static final int HEALTH_MAX = 100;
-    public static int currentHealth = HEALTH_MAX;
+    private final int HEALTH_MAX = 100;
+    private int currentHealth = HEALTH_MAX;
 
     private int greenValue = 255;
 
-    private int score = 0;
-    private int level = 1;
+    public void decerementHealth() {
+        currentHealth--;
+    }
 
     public void tick() {
         currentHealth = GameObject.clamp(currentHealth, 0, 100);
         greenValue = GameObject.clamp(currentHealth * 2, 0, 255);
-
-        score++;
     }
 
-    public void render(Graphics g) {
+    public void render(Graphics g, int score, int level) {
         g.setColor(Color.GRAY);
         g.fillRect(15, 15, 2 * HEALTH_MAX, 32);
 
@@ -32,9 +31,5 @@ public class HUD {
 
         g.drawString("Score: " + score, 10, 64);
         g.drawString("Level: " + level, 10, 80);
-    }
-
-    public void incrementLevel() {
-        level++;
     }
 }
