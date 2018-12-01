@@ -23,7 +23,7 @@ public class Handler {
     public void tick() {
         score++;
 
-        if (score % 10 == 0) {
+        if (score % 100 == 0) {
             incrementLevel();
 
             spawner.createNewBasicEnemy();
