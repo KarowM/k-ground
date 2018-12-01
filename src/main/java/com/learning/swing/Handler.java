@@ -28,6 +28,9 @@ public class Handler {
 
             spawner.createNewBasicEnemy();
         }
+        if (score == 500) {
+            spawner.createNewSmartEnemy();
+        }
 
         spawner.tick();
         hud.tick();

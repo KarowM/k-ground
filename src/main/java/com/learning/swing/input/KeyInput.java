@@ -65,7 +65,11 @@ public class KeyInput extends KeyAdapter {
                 rP = false;
         }
 
-        if (!uP && !dP) { player.setVelY(0); }
-        if (!lP && !rP) { player.setVelX(0); }
+        if (!uP && !dP) {
+            player.setVelY(0);
+        }
+        if (!lP && !rP) {
+            player.setVelX(0);
+        }
     }
 }
