@@ -27,7 +27,7 @@ public class SmartEnemy extends GameObject {
         double diffX = x - player.getX() - ENEMY_SIZE/2;
         double diffY = y - player.getY() - ENEMY_SIZE/2;
 
-        double distance = Math.sqrt((x - player.getX()) * (x - player.getX()) + (y - player.getY()) * (y - player.getY()));
+        double distance = Math.sqrt(Math.pow(x - player.getX(), 2) + Math.pow(y-player.getY(), 2));
         velX = ((-1.0 / distance) * diffX);
         velY = ((-1.0 / distance) * diffY);
 
