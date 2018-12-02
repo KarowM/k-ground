@@ -10,7 +10,7 @@ public class Handler {
     private Spawner spawner;
 
     private int score = 0;
-    private int level = 1;
+    private int level = 0;
     private boolean isBossLevel;
 
     public Handler(HUD hud, Spawner spawner) {
@@ -28,10 +28,10 @@ public class Handler {
             incrementLevel();
             spawner.createNewBasicEnemy();
         }
-        if (score == 400 && !isBossLevel) {
+        if (score % 400 == 0 && !isBossLevel) {
             spawner.createNewSmartEnemy();
         }
-        if (score == 1000) {
+        if (score == 1200) {
             spawner.clearAll();
             isBossLevel = true;
             spawner.createNewEnemyBoss();
