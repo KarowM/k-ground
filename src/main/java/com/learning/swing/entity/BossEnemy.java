@@ -1,20 +1,26 @@
 package com.learning.swing.entity;
 
+import com.learning.swing.Game;
 import com.learning.swing.utils.ID;
 
 import java.awt.*;
+import java.util.Random;
 
 public class BossEnemy extends GameObject {
 
     public static final int BOSS_SIZE = 96;
+    private static final Random R = new Random();
     private Spawner spawner;
+
+    private int entranceTimer = 110;
+    private int movementTimer = 210;
 
     public BossEnemy(int x, int y, ID id, Spawner spawner) {
         super(x, y, id);
         this.spawner = spawner;
 
         velX = 0;
-        velY = 0;
+        velY = 1;
     }
 
     public Rectangle getBounds() {
@@ -25,11 +31,31 @@ public class BossEnemy extends GameObject {
         x += velX;
         y += velY;
 
-        spawner.addObject(new Trail(x, y, ID.Trail, Color.RED, BOSS_SIZE, BOSS_SIZE, 0.05, spawner));
+        entranceTimer--;
+        movementTimer--;
+
+        if (entranceTimer == 0) {
+            velY = 0;
+        }
+
+        if (movementTimer == 0) {
+            velX = 3;
+        }
+
+        if (movementTimer <= 0) {
+            int spawn = R.nextInt(10);
+            if (spawn < 3) {
+                spawner.createNewBossEnemyBullet(x + BOSS_SIZE / 2, y + BOSS_SIZE);
+            }
+        }
+
+        if (x <= 0 || x >= Game.WIDTH - BOSS_SIZE) {
+            velX *= -1;
+        }
     }
 
     public void render(Graphics g) {
-        g.setColor(Color.RED);
+        g.setColor(Color.DARK_GRAY);
         g.fillRect((int) x, (int) y, BOSS_SIZE, BOSS_SIZE);
     }
 }

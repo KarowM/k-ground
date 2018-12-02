@@ -77,4 +77,8 @@ public class Spawner {
     public void createNewEnemyBoss() {
         objects.add(new BossEnemy((Game.WIDTH / 2) - BossEnemy.BOSS_SIZE / 2, -BossEnemy.BOSS_SIZE, ID.BossEnemy, this));
     }
+
+    public void createNewBossEnemyBullet(double x, double y) {
+        objects.add(new BossEnemyBullet((int) x, (int) y, ID.BasicEnemy, this));
+    }
 }
