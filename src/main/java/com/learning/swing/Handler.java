@@ -31,7 +31,7 @@ public class Handler {
         if (score % 400 == 0 && !isBossLevel) {
             spawner.createNewSmartEnemy();
         }
-        if (score == 1200) {
+        if (score == 1500) {
             spawner.clearAll();
             isBossLevel = true;
             spawner.createNewEnemyBoss();
