@@ -13,7 +13,7 @@ public class BossEnemy extends GameObject {
     private Spawner spawner;
 
     private int entranceTimer = 110;
-    private int movementTimer = 210;
+    private int movementTimer = 600;
 
     public BossEnemy(int x, int y, ID id, Spawner spawner) {
         super(x, y, id);
@@ -42,9 +42,9 @@ public class BossEnemy extends GameObject {
             velX = 3;
         }
 
-        if (movementTimer <= 0) {
+        if (movementTimer <= 250) {
             int spawn = R.nextInt(10);
-            if (spawn < 3) {
+            if (spawn < 2) {
                 spawner.createNewBossEnemyBullet(x + BOSS_SIZE / 2, y + BOSS_SIZE);
             }
         }
