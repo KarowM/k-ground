@@ -27,7 +27,6 @@ public class Spawner {
         for (int i = 0; i < objects.size(); i++) {
             objects.get(i).tick();
         }
-
         checkForCollisions();
     }
 
@@ -72,5 +71,17 @@ public class Spawner {
 
     public void createNewSmartEnemy() {
         objects.add(new SmartEnemy(R.nextInt(Game.WIDTH), R.nextInt(Game.HEIGHT), ID.SmartEnemy, this));
+    }
+
+    public void createNewEnemyBoss() {
+        objects.add(new BossEnemy((Game.WIDTH / 2) - BossEnemy.BOSS_SIZE / 2, -BossEnemy.BOSS_SIZE, ID.BossEnemy, this));
+    }
+
+    public void createNewBossEnemyBullet(double x, double y) {
+        objects.add(new BossEnemyBullet((int) x, (int) y, ID.BasicEnemy, this));
+    }
+
+    public void clearAll() {
+        objects.clear();
     }
 }

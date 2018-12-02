@@ -10,25 +10,31 @@ public class Handler {
     private Spawner spawner;
 
     private int score = 0;
-    private int level = 1;
+    private int level = 0;
+    private boolean isBossLevel;
 
     public Handler(HUD hud, Spawner spawner) {
         this.hud = hud;
         this.spawner = spawner;
 
+        isBossLevel = false;
         spawner.createPlayer();
     }
 
     public void tick() {
         score++;
 
-        if (score % 100 == 0) {
+        if (score % 100 == 0 && !isBossLevel) {
             incrementLevel();
-
             spawner.createNewBasicEnemy();
         }
-        if (score == 500) {
+        if (score % 400 == 0 && !isBossLevel) {
             spawner.createNewSmartEnemy();
+        }
+        if (score == 1500) {
+            spawner.clearAll();
+            isBossLevel = true;
+            spawner.createNewEnemyBoss();
         }
 
         spawner.tick();
