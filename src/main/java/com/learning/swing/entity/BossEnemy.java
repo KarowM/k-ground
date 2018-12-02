@@ -12,7 +12,7 @@ public class BossEnemy extends GameObject {
     private static final Random R = new Random();
     private Spawner spawner;
 
-    private int entranceTimer = 110;
+    private int entranceTimer = 160;
     private int movementTimer = 600;
 
     public BossEnemy(int x, int y, ID id, Spawner spawner) {
@@ -20,7 +20,7 @@ public class BossEnemy extends GameObject {
         this.spawner = spawner;
 
         velX = 0;
-        velY = 1;
+        velY = 0;
     }
 
     public Rectangle getBounds() {
@@ -33,6 +33,10 @@ public class BossEnemy extends GameObject {
 
         entranceTimer--;
         movementTimer--;
+
+        if (entranceTimer == 110) {
+            velY = 1;
+        }
 
         if (entranceTimer == 0) {
             velY = 0;
