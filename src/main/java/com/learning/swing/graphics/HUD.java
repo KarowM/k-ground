@@ -10,7 +10,7 @@ public class HUD {
 
     private double greenValue = 255;
 
-    public void decerementHealth() {
+    public void decrementHealth() {
         currentHealth--;
     }
 

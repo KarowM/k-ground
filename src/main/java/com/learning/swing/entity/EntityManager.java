@@ -48,7 +48,7 @@ public class EntityManager {
                 }
             } else if (entity.getId() != ID.Trail) {
                 if (player.getBounds().intersects(entity.getBounds())) {
-                    hud.decerementHealth();
+                    hud.decrementHealth();
                 }
             }
         }
