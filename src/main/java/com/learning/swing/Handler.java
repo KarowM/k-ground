@@ -11,7 +11,7 @@ public class Handler {
     private int score = 0;
     private boolean isBossLevel;
 
-    public Handler(HUD hud, EntityManager entityManager) {
+    public Handler(EntityManager entityManager) {
         this.entityManager = entityManager;
 
         isBossLevel = false;
