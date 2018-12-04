@@ -41,7 +41,12 @@ public class Spawner {
         for (int i = 0; i < objects.size(); i++) {
             GameObject tempObj = objects.get(i);
 
-            if (tempObj.getId() != ID.Trail) {
+            if (tempObj.getId() == ID.SmartEnemy) {
+                if (player.getBounds().intersects(tempObj.getBounds())) {
+                    player.freeze();
+                    removeObject(tempObj);
+                }
+            } else if (tempObj.getId() != ID.Trail) {
                 if (player.getBounds().intersects(tempObj.getBounds())) {
                     hud.decerementHealth();
                 }
