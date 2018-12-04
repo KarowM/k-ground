@@ -14,12 +14,12 @@ public class Spawner {
     private static final Random R = new Random();
 
     private Player player;
-    private List<GameObject> objects;
+    private List<Entity> objects;
     private HUD hud;
 
     public Spawner(HUD hud) {
         this.hud = hud;
-        objects = new ArrayList<GameObject>();
+        objects = new ArrayList<Entity>();
     }
 
     public void tick() {
@@ -39,7 +39,7 @@ public class Spawner {
 
     private void checkForCollisions() {
         for (int i = 0; i < objects.size(); i++) {
-            GameObject tempObj = objects.get(i);
+            Entity tempObj = objects.get(i);
 
             if (tempObj.getId() == ID.SmartEnemy) {
                 if (player.getBounds().intersects(tempObj.getBounds())) {
@@ -66,11 +66,11 @@ public class Spawner {
         return player;
     }
 
-    public void removeObject(GameObject object) {
+    public void removeObject(Entity object) {
         objects.remove(object);
     }
 
-    public void addObject(GameObject object) {
+    public void addObject(Entity object) {
         objects.add(object);
     }
 

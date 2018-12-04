@@ -6,7 +6,7 @@ import com.learning.swing.utils.ID;
 import java.awt.*;
 import java.util.Random;
 
-public class BossEnemy extends GameObject {
+public class BossEnemy extends Entity {
 
     public static final int BOSS_SIZE = 96;
     private static final Random R = new Random();

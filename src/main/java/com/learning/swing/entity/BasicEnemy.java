@@ -5,7 +5,7 @@ import com.learning.swing.utils.ID;
 
 import java.awt.*;
 
-public class BasicEnemy extends GameObject {
+public class BasicEnemy extends Entity {
 
     public static final int ENEMY_SIZE = 16;
     private Spawner spawner;

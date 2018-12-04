@@ -5,7 +5,7 @@ import com.learning.swing.utils.ID;
 
 import java.awt.*;
 
-public class Player extends GameObject {
+public class Player extends Entity {
 
     public static final int PLAYER_SIZE = 32;
     private int timeLeftFrozen = 0;

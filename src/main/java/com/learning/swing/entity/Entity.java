@@ -4,13 +4,13 @@ import com.learning.swing.utils.ID;
 
 import java.awt.*;
 
-public abstract class GameObject {
+public abstract class Entity {
 
     protected double x, y;
     protected double velX, velY;
     protected ID id;
 
-    public GameObject(double x, double y, ID id) {
+    public Entity(double x, double y, ID id) {
         this.x = x;
         this.y = y;
         this.id = id;

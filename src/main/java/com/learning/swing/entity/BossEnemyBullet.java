@@ -6,7 +6,7 @@ import com.learning.swing.utils.ID;
 import java.awt.*;
 import java.util.Random;
 
-public class BossEnemyBullet extends GameObject {
+public class BossEnemyBullet extends Entity {
 
     public static final int ENEMY_SIZE = 16;
     private Spawner spawner;

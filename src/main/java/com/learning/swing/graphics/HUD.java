@@ -1,6 +1,6 @@
 package com.learning.swing.graphics;
 
-import com.learning.swing.entity.GameObject;
+import com.learning.swing.entity.Entity;
 
 import java.awt.*;
 
@@ -15,8 +15,8 @@ public class HUD {
     }
 
     public void tick() {
-        currentHealth = GameObject.clamp(currentHealth, 0, 100);
-        greenValue = GameObject.clamp(currentHealth * 2, 0, 255);
+        currentHealth = Entity.clamp(currentHealth, 0, 100);
+        greenValue = Entity.clamp(currentHealth * 2, 0, 255);
     }
 
     public void render(Graphics g, int score, int level) {

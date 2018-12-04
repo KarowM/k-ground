@@ -4,7 +4,7 @@ import com.learning.swing.utils.ID;
 
 import java.awt.*;
 
-public class Trail extends GameObject {
+public class Trail extends Entity {
 
     private float alpha = 1;
     private Color color;
