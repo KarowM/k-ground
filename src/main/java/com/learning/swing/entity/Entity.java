@@ -36,28 +36,12 @@ public abstract class Entity {
         return x;
     }
 
-    public void setX(double x) {
-        this.x = x;
-    }
-
     public double getY() {
         return y;
     }
 
-    public void setY(double y) {
-        this.y = y;
-    }
-
-    public double getVelX() {
-        return velX;
-    }
-
     public void setVelX(double velX) {
         this.velX = velX;
-    }
-
-    public double getVelY() {
-        return velY;
     }
 
     public void setVelY(int velY) {
@@ -66,13 +50,5 @@ public abstract class Entity {
 
     public ID getId() {
         return id;
-    }
-
-    public void setId(ID id) {
-        this.id = id;
-    }
-
-    public void goUp() {
-        y--;
     }
 }
