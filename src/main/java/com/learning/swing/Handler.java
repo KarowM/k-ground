@@ -6,15 +6,12 @@ import com.learning.swing.graphics.HUD;
 import java.awt.*;
 
 public class Handler {
-    private HUD hud;
     private EntityManager entityManager;
 
     private int score = 0;
-    private int level = 0;
     private boolean isBossLevel;
 
     public Handler(HUD hud, EntityManager entityManager) {
-        this.hud = hud;
         this.entityManager = entityManager;
 
         isBossLevel = false;
@@ -25,7 +22,6 @@ public class Handler {
         score++;
 
         if (score % 100 == 0 && !isBossLevel) {
-            incrementLevel();
             entityManager.createNewBasicEnemy();
         }
         if (score % 400 == 0 && !isBossLevel) {
@@ -38,15 +34,9 @@ public class Handler {
         }
 
         entityManager.tick();
-        hud.tick();
-    }
-
-    public void incrementLevel() {
-        level++;
     }
 
     public void render(Graphics g) {
         entityManager.render(g);
-        hud.render(g, score, level);
     }
 }

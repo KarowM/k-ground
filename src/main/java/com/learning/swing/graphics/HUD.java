@@ -7,6 +7,8 @@ import java.awt.*;
 public class HUD {
     private final int HEALTH_MAX = 100;
     private double currentHealth = HEALTH_MAX;
+    private int score = 0;
+    private int level = 0;
 
     private double greenValue = 255;
 
@@ -17,9 +19,11 @@ public class HUD {
     public void tick() {
         currentHealth = Entity.clamp(currentHealth, 0, 100);
         greenValue = Entity.clamp(currentHealth * 2, 0, 255);
+        score++;
+        level = level + (score % 100 == 0 ? 1 : 0);
     }
 
-    public void render(Graphics g, int score, int level) {
+    public void render(Graphics g) {
         g.setColor(Color.GRAY);
         g.fillRect(15, 15, 2 * HEALTH_MAX, 32);
 

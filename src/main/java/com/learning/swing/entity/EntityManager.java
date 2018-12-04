@@ -28,6 +28,8 @@ public class EntityManager {
             entities.get(i).tick();
         }
         checkForCollisions();
+
+        hud.tick();
     }
 
     public void render(Graphics g) {
@@ -35,6 +37,8 @@ public class EntityManager {
         for (int i = 0; i < entities.size(); i++) {
             entities.get(i).render(g);
         }
+
+        hud.render(g);
     }
 
     private void checkForCollisions() {
