@@ -8,12 +8,12 @@ public class SmartEnemy extends Entity {
 
     private static final int ENEMY_SIZE = 16;
     private final Player player;
-    private Spawner spawner;
+    private EntityManager entityManager;
 
-    SmartEnemy(int x, int y, ID id, Spawner spawner) {
+    SmartEnemy(int x, int y, ID id, EntityManager entityManager) {
         super(x, y, id);
-        this.spawner = spawner;
-        this.player = spawner.getPlayer();
+        this.entityManager = entityManager;
+        this.player = entityManager.getPlayer();
     }
 
     public Rectangle getBounds() {
@@ -31,7 +31,7 @@ public class SmartEnemy extends Entity {
         velX = ((-1.0 / distance) * diffX) * 2;
         velY = ((-1.0 / distance) * diffY) * 2;
 
-        spawner.addEntity(new Trail(x, y, ID.Trail, Color.BLUE, ENEMY_SIZE, ENEMY_SIZE, 0.05, spawner));
+        entityManager.addEntity(new Trail(x, y, ID.Trail, Color.BLUE, ENEMY_SIZE, ENEMY_SIZE, 0.05, entityManager));
     }
 
     public void render(Graphics g) {

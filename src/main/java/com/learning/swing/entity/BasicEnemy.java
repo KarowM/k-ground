@@ -8,11 +8,11 @@ import java.awt.*;
 public class BasicEnemy extends Entity {
 
     private static final int ENEMY_SIZE = 16;
-    private Spawner spawner;
+    private EntityManager entityManager;
 
-    BasicEnemy(int x, int y, ID id, Spawner spawner) {
+    BasicEnemy(int x, int y, ID id, EntityManager entityManager) {
         super(x, y, id);
-        this.spawner = spawner;
+        this.entityManager = entityManager;
 
         velX = 5;
         velY = 5;
@@ -33,7 +33,7 @@ public class BasicEnemy extends Entity {
             velX *= -1;
         }
 
-        spawner.addEntity(new Trail(x, y, ID.Trail, Color.RED, ENEMY_SIZE, ENEMY_SIZE, 0.05, spawner));
+        entityManager.addEntity(new Trail(x, y, ID.Trail, Color.RED, ENEMY_SIZE, ENEMY_SIZE, 0.05, entityManager));
     }
 
     public void render(Graphics g) {

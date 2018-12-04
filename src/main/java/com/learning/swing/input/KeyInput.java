@@ -1,28 +1,28 @@
 package com.learning.swing.input;
 
 import com.learning.swing.entity.Player;
-import com.learning.swing.entity.Spawner;
+import com.learning.swing.entity.EntityManager;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class KeyInput extends KeyAdapter {
 
-    private Spawner spawner;
+    private EntityManager entityManager;
     private boolean uP = false;
     private boolean dP = false;
     private boolean lP = false;
     private boolean rP = false;
 
-    public KeyInput(Spawner spawner) {
-        this.spawner = spawner;
+    public KeyInput(EntityManager entityManager) {
+        this.entityManager = entityManager;
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
 
-        Player player = spawner.getPlayer();
+        Player player = entityManager.getPlayer();
         switch (key) {
             case KeyEvent.VK_W:
                 uP = true;
@@ -49,7 +49,7 @@ public class KeyInput extends KeyAdapter {
     public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
 
-        Player player = spawner.getPlayer();
+        Player player = entityManager.getPlayer();
 
         switch (key) {
             case KeyEvent.VK_W:

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Spawner {
+public class EntityManager {
 
     private static final Random R = new Random();
 
@@ -17,7 +17,7 @@ public class Spawner {
     private List<Entity> entities;
     private HUD hud;
 
-    public Spawner(HUD hud) {
+    public EntityManager(HUD hud) {
         this.hud = hud;
         entities = new ArrayList<Entity>();
     }

@@ -10,14 +10,14 @@ public class BossEnemy extends Entity {
 
     public static final int BOSS_SIZE = 96;
     private static final Random R = new Random();
-    private Spawner spawner;
+    private EntityManager entityManager;
 
     private int entranceTimer = 160;
     private int movementTimer = 600;
 
-    public BossEnemy(int x, int y, ID id, Spawner spawner) {
+    public BossEnemy(int x, int y, ID id, EntityManager entityManager) {
         super(x, y, id);
-        this.spawner = spawner;
+        this.entityManager = entityManager;
 
         velX = 0;
         velY = 0;
@@ -49,7 +49,7 @@ public class BossEnemy extends Entity {
         if (movementTimer <= 250) {
             int spawn = R.nextInt(10);
             if (spawn < 2) {
-                spawner.createNewBossEnemyBullet(x + BOSS_SIZE / 2, y + BOSS_SIZE);
+                entityManager.createNewBossEnemyBullet(x + BOSS_SIZE / 2, y + BOSS_SIZE);
             }
         }
 

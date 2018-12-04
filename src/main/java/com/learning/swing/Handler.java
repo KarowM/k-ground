@@ -1,24 +1,24 @@
 package com.learning.swing;
 
-import com.learning.swing.entity.Spawner;
+import com.learning.swing.entity.EntityManager;
 import com.learning.swing.graphics.HUD;
 
 import java.awt.*;
 
 public class Handler {
     private HUD hud;
-    private Spawner spawner;
+    private EntityManager entityManager;
 
     private int score = 0;
     private int level = 0;
     private boolean isBossLevel;
 
-    public Handler(HUD hud, Spawner spawner) {
+    public Handler(HUD hud, EntityManager entityManager) {
         this.hud = hud;
-        this.spawner = spawner;
+        this.entityManager = entityManager;
 
         isBossLevel = false;
-        spawner.createPlayer();
+        entityManager.createPlayer();
     }
 
     public void tick() {
@@ -26,18 +26,18 @@ public class Handler {
 
         if (score % 100 == 0 && !isBossLevel) {
             incrementLevel();
-            spawner.createNewBasicEnemy();
+            entityManager.createNewBasicEnemy();
         }
         if (score % 400 == 0 && !isBossLevel) {
-            spawner.createNewSmartEnemy();
+            entityManager.createNewSmartEnemy();
         }
         if (score == 1500) {
-            spawner.clearAll();
+            entityManager.clearAll();
             isBossLevel = true;
-            spawner.createNewEnemyBoss();
+            entityManager.createNewEnemyBoss();
         }
 
-        spawner.tick();
+        entityManager.tick();
         hud.tick();
     }
 
@@ -46,7 +46,7 @@ public class Handler {
     }
 
     public void render(Graphics g) {
-        spawner.render(g);
+        entityManager.render(g);
         hud.render(g, score, level);
     }
 }

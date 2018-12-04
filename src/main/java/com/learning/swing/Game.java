@@ -1,6 +1,6 @@
 package com.learning.swing;
 
-import com.learning.swing.entity.Spawner;
+import com.learning.swing.entity.EntityManager;
 import com.learning.swing.graphics.HUD;
 import com.learning.swing.graphics.Window;
 import com.learning.swing.input.KeyInput;
@@ -19,10 +19,10 @@ public class Game extends Canvas implements Runnable {
 
     public Game() {
         HUD hud = new HUD();
-        Spawner spawner = new Spawner(hud);
-        handler = new Handler(hud, spawner);
+        EntityManager entityManager = new EntityManager(hud);
+        handler = new Handler(hud, entityManager);
 
-        this.addKeyListener(new KeyInput(spawner));
+        this.addKeyListener(new KeyInput(entityManager));
 
         new Window(HEIGHT, WIDTH, "Lets build a game!", this);
     }
