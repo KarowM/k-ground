@@ -8,11 +8,11 @@ import java.util.Random;
 
 public class BossEnemyBullet extends Entity {
 
-    public static final int ENEMY_SIZE = 16;
+    private static final int ENEMY_SIZE = 16;
     private Spawner spawner;
     private Random R = new Random();
 
-    public BossEnemyBullet(int x, int y, ID id, Spawner spawner) {
+    BossEnemyBullet(int x, int y, ID id, Spawner spawner) {
         super(x, y, id);
         this.spawner = spawner;
 
@@ -29,7 +29,7 @@ public class BossEnemyBullet extends Entity {
         y += velY;
 
         if (y >= Game.HEIGHT || x >= Game.WIDTH) {
-            spawner.removeObject(this);
+            spawner.removeEntity(this);
         }
     }
 

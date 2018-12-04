@@ -9,10 +9,10 @@ public class Trail extends Entity {
     private float alpha = 1;
     private Color color;
     private Spawner spawner;
-    int width, height;
-    double life;
+    private int width, height;
+    private double life;
 
-    public Trail(double x, double y, ID id, Color color, int width, int height, double life, Spawner spawner) {
+    Trail(double x, double y, ID id, Color color, int width, int height, double life, Spawner spawner) {
         super(x, y, id);
         this.color = color;
         this.spawner = spawner;
@@ -25,7 +25,7 @@ public class Trail extends Entity {
         if (alpha > life) {
             alpha -= (life - 0.0001f);
         } else {
-            spawner.removeObject(this);
+            spawner.removeEntity(this);
         }
     }
 

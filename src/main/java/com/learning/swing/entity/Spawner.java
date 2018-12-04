@@ -14,40 +14,40 @@ public class Spawner {
     private static final Random R = new Random();
 
     private Player player;
-    private List<Entity> objects;
+    private List<Entity> entities;
     private HUD hud;
 
     public Spawner(HUD hud) {
         this.hud = hud;
-        objects = new ArrayList<Entity>();
+        entities = new ArrayList<Entity>();
     }
 
     public void tick() {
         player.tick();
-        for (int i = 0; i < objects.size(); i++) {
-            objects.get(i).tick();
+        for (int i = 0; i < entities.size(); i++) {
+            entities.get(i).tick();
         }
         checkForCollisions();
     }
 
     public void render(Graphics g) {
         player.render(g);
-        for (int i = 0; i < objects.size(); i++) {
-            objects.get(i).render(g);
+        for (int i = 0; i < entities.size(); i++) {
+            entities.get(i).render(g);
         }
     }
 
     private void checkForCollisions() {
-        for (int i = 0; i < objects.size(); i++) {
-            Entity tempObj = objects.get(i);
+        for (int i = 0; i < entities.size(); i++) {
+            Entity entity = entities.get(i);
 
-            if (tempObj.getId() == ID.SmartEnemy) {
-                if (player.getBounds().intersects(tempObj.getBounds())) {
+            if (entity.getId() == ID.SmartEnemy) {
+                if (player.getBounds().intersects(entity.getBounds())) {
                     player.freeze();
-                    removeObject(tempObj);
+                    removeEntity(entity);
                 }
-            } else if (tempObj.getId() != ID.Trail) {
-                if (player.getBounds().intersects(tempObj.getBounds())) {
+            } else if (entity.getId() != ID.Trail) {
+                if (player.getBounds().intersects(entity.getBounds())) {
                     hud.decerementHealth();
                 }
             }
@@ -59,34 +59,34 @@ public class Spawner {
     }
 
     public void createNewBasicEnemy() {
-        objects.add(new BasicEnemy(R.nextInt(Game.WIDTH), R.nextInt(Game.HEIGHT), ID.BasicEnemy, this));
+        entities.add(new BasicEnemy(R.nextInt(Game.WIDTH), R.nextInt(Game.HEIGHT), ID.BasicEnemy, this));
     }
 
     public Player getPlayer() {
         return player;
     }
 
-    public void removeObject(Entity object) {
-        objects.remove(object);
+    public void removeEntity(Entity entity) {
+        entities.remove(entity);
     }
 
-    public void addObject(Entity object) {
-        objects.add(object);
+    public void addEntity(Entity entity) {
+        entities.add(entity);
     }
 
     public void createNewSmartEnemy() {
-        objects.add(new SmartEnemy(R.nextInt(Game.WIDTH), R.nextInt(Game.HEIGHT), ID.SmartEnemy, this));
+        entities.add(new SmartEnemy(R.nextInt(Game.WIDTH), R.nextInt(Game.HEIGHT), ID.SmartEnemy, this));
     }
 
     public void createNewEnemyBoss() {
-        objects.add(new BossEnemy((Game.WIDTH / 2) - BossEnemy.BOSS_SIZE / 2, -BossEnemy.BOSS_SIZE, ID.BossEnemy, this));
+        entities.add(new BossEnemy((Game.WIDTH / 2) - BossEnemy.BOSS_SIZE / 2, -BossEnemy.BOSS_SIZE, ID.BossEnemy, this));
     }
 
     public void createNewBossEnemyBullet(double x, double y) {
-        objects.add(new BossEnemyBullet((int) x, (int) y, ID.BasicEnemy, this));
+        entities.add(new BossEnemyBullet((int) x, (int) y, ID.BasicEnemy, this));
     }
 
     public void clearAll() {
-        objects.clear();
+        entities.clear();
     }
 }

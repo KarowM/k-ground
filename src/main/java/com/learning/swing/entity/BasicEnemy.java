@@ -7,10 +7,10 @@ import java.awt.*;
 
 public class BasicEnemy extends Entity {
 
-    public static final int ENEMY_SIZE = 16;
+    private static final int ENEMY_SIZE = 16;
     private Spawner spawner;
 
-    public BasicEnemy(int x, int y, ID id, Spawner spawner) {
+    BasicEnemy(int x, int y, ID id, Spawner spawner) {
         super(x, y, id);
         this.spawner = spawner;
 
@@ -33,7 +33,7 @@ public class BasicEnemy extends Entity {
             velX *= -1;
         }
 
-        spawner.addObject(new Trail(x, y, ID.Trail, Color.RED, ENEMY_SIZE, ENEMY_SIZE, 0.05, spawner));
+        spawner.addEntity(new Trail(x, y, ID.Trail, Color.RED, ENEMY_SIZE, ENEMY_SIZE, 0.05, spawner));
     }
 
     public void render(Graphics g) {
