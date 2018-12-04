@@ -6,6 +6,8 @@ import com.learning.swing.utils.ID;
 import java.awt.*;
 
 public class Player extends Entity {
+    public static final int HEALTH_MAX = 100;
+    private double currentHealth = HEALTH_MAX;
 
     public static final int PLAYER_SIZE = 32;
     private int timeLeftFrozen = 0;
@@ -23,6 +25,8 @@ public class Player extends Entity {
     }
 
     public void tick() {
+        currentHealth = Entity.clamp(currentHealth, 0, 100);
+
         if (timeLeftFrozen > 0) {
             timeLeftFrozen--;
         }
@@ -37,5 +41,13 @@ public class Player extends Entity {
         Color color = timeLeftFrozen > 0 ? Color.CYAN : Color.WHITE;
         g.setColor(color);
         g.fillRect((int) x, (int) y, PLAYER_SIZE, PLAYER_SIZE);
+    }
+
+    public void decrementHealth() {
+        currentHealth--;
+    }
+
+    public double getHealth() {
+        return currentHealth;
     }
 }

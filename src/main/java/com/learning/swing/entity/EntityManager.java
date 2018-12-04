@@ -17,8 +17,9 @@ public class EntityManager {
     private List<Entity> entities;
     private HUD hud;
 
-    public EntityManager(HUD hud) {
-        this.hud = hud;
+    public EntityManager() {
+        player = new Player(Game.WIDTH / 2 - 32, Game.HEIGHT / 2 - 32, ID.Player);
+        hud = new HUD(player);
         entities = new ArrayList<Entity>();
     }
 

@@ -18,8 +18,7 @@ public class Game extends Canvas implements Runnable {
     private Handler handler;
 
     public Game() {
-        HUD hud = new HUD();
-        EntityManager entityManager = new EntityManager(hud);
+        EntityManager entityManager = new EntityManager();
         handler = new Handler(entityManager);
 
         this.addKeyListener(new KeyInput(entityManager));
