@@ -33,11 +33,11 @@ public class BasicEnemy extends Entity {
             velX *= -1;
         }
 
-        entityManager.addEntity(new Trail(x, y, ID.Trail, Color.RED, SIZE, SIZE, 0.05, entityManager));
+        entityManager.addEntity(new Trail(x, y, ID.Trail, Color.YELLOW, SIZE, SIZE, 0.05, entityManager));
     }
 
     public void render(Graphics g) {
-        g.setColor(Color.RED);
+        g.setColor(Color.YELLOW);
         g.fillRect((int) x, (int) y, SIZE, SIZE);
     }
 }
