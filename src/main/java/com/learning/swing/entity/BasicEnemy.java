@@ -1,7 +1,6 @@
 package com.learning.swing.entity;
 
 import com.learning.swing.Game;
-import com.learning.swing.utils.ID;
 
 import java.awt.*;
 
@@ -10,8 +9,8 @@ public class BasicEnemy extends Entity {
     private static final int SIZE = 16;
     private EntityManager entityManager;
 
-    BasicEnemy(double x, double y, ID id, EntityManager entityManager) {
-        super(x, y, id);
+    BasicEnemy(double x, double y, EntityManager entityManager) {
+        super(x, y);
         this.entityManager = entityManager;
 
         velX = 5;
@@ -38,7 +37,7 @@ public class BasicEnemy extends Entity {
             velX *= -1;
         }
 
-        entityManager.addEntity(new Trail(x, y, ID.Trail, Color.YELLOW, SIZE, SIZE, 0.05, entityManager));
+        entityManager.addEntity(new Trail(x, y, Color.YELLOW, SIZE, SIZE, 0.05, entityManager));
     }
 
     public void render(Graphics g) {

@@ -1,7 +1,6 @@
 package com.learning.swing.entity;
 
 import com.learning.swing.Game;
-import com.learning.swing.utils.ID;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -17,8 +16,8 @@ public class Player extends Entity {
 
     private int timeLeftFrozen = 0;
 
-    public Player(double x, double y, ID id) {
-        super(x, y, id);
+    public Player(double x, double y) {
+        super(x, y);
         String path = new File("src/main/resources/spaceship.png").getAbsolutePath();
         try {
             normal = ImageIO.read(new File(path));

@@ -1,7 +1,6 @@
 package com.learning.swing.entity;
 
 import com.learning.swing.Game;
-import com.learning.swing.utils.ID;
 
 import java.awt.*;
 import java.util.Random;
@@ -15,8 +14,8 @@ public class BossEnemy extends Entity {
     private int entranceTimer = 160;
     private int movementTimer = 600;
 
-    BossEnemy(double x, double y, ID id, EntityManager entityManager) {
-        super(x, y, id);
+    BossEnemy(double x, double y, EntityManager entityManager) {
+        super(x, y);
         this.entityManager = entityManager;
 
         velX = 0;

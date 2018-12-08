@@ -1,7 +1,6 @@
 package com.learning.swing.entity;
 
 import com.learning.swing.Game;
-import com.learning.swing.utils.ID;
 
 import java.awt.*;
 import java.util.Random;
@@ -12,8 +11,8 @@ public class BossEnemyBullet extends Entity {
     private EntityManager entityManager;
     private Random R = new Random();
 
-    BossEnemyBullet(double x, double y, ID id, EntityManager entityManager) {
-        super(x, y, id);
+    BossEnemyBullet(double x, double y, EntityManager entityManager) {
+        super(x, y);
         this.entityManager = entityManager;
 
         velX = R.nextInt(5 + 1 + 5) - 5;

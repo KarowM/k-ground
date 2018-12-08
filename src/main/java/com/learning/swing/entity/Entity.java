@@ -1,19 +1,15 @@
 package com.learning.swing.entity;
 
-import com.learning.swing.utils.ID;
-
 import java.awt.*;
 
 public abstract class Entity {
 
     protected double x, y;
     protected double velX, velY;
-    protected ID id;
 
-    public Entity(double x, double y, ID id) {
+    public Entity(double x, double y) {
         this.x = x;
         this.y = y;
-        this.id = id;
     }
 
     public static double clamp(double var, int min, int max) {
@@ -48,9 +44,5 @@ public abstract class Entity {
 
     public void setVelY(int velY) {
         this.velY = velY;
-    }
-
-    public ID getId() {
-        return id;
     }
 }

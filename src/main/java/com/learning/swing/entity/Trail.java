@@ -1,7 +1,5 @@
 package com.learning.swing.entity;
 
-import com.learning.swing.utils.ID;
-
 import java.awt.*;
 
 public class Trail extends Entity {
@@ -12,8 +10,8 @@ public class Trail extends Entity {
     private int width, height;
     private double life;
 
-    Trail(double x, double y, ID id, Color color, int width, int height, double life, EntityManager entityManager) {
-        super(x, y, id);
+    Trail(double x, double y, Color color, int width, int height, double life, EntityManager entityManager) {
+        super(x, y);
         this.color = color;
         this.entityManager = entityManager;
         this.width = width;

@@ -1,7 +1,5 @@
 package com.learning.swing.entity;
 
-import com.learning.swing.utils.ID;
-
 import java.awt.*;
 
 public class SmartEnemy extends Entity {
@@ -10,8 +8,8 @@ public class SmartEnemy extends Entity {
     private final Player player;
     private EntityManager entityManager;
 
-    SmartEnemy(double x, double y, ID id, EntityManager entityManager) {
-        super(x, y, id);
+    SmartEnemy(double x, double y, EntityManager entityManager) {
+        super(x, y);
         this.entityManager = entityManager;
         this.player = entityManager.getPlayer();
     }
@@ -37,7 +35,7 @@ public class SmartEnemy extends Entity {
         velX = ((-1.0 / distance) * diffX) * 2;
         velY = ((-1.0 / distance) * diffY) * 2;
 
-        entityManager.addEntity(new Trail(x, y, ID.Trail, Color.BLUE, SIZE, SIZE, 0.05, entityManager));
+        entityManager.addEntity(new Trail(x, y, Color.BLUE, SIZE, SIZE, 0.05, entityManager));
     }
 
     public void render(Graphics g) {
