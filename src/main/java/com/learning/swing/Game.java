@@ -1,7 +1,6 @@
 package com.learning.swing;
 
 import com.learning.swing.entity.EntityManager;
-import com.learning.swing.graphics.HUD;
 import com.learning.swing.graphics.Window;
 import com.learning.swing.input.KeyInput;
 

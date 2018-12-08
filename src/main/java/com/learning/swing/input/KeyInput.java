@@ -1,7 +1,7 @@
 package com.learning.swing.input;
 
-import com.learning.swing.entity.Player;
 import com.learning.swing.entity.EntityManager;
+import com.learning.swing.entity.Player;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
