@@ -1,7 +1,6 @@
 package com.learning.swing;
 
 import com.learning.swing.entity.EntityManager;
-import com.learning.swing.graphics.HUD;
 import com.learning.swing.graphics.Window;
 import com.learning.swing.input.KeyInput;
 
@@ -83,7 +82,7 @@ public class Game extends Canvas implements Runnable {
         }
         Graphics g = bs.getDrawGraphics();
 
-        g.setColor(Color.black);
+        g.setColor(Color.BLACK);
         g.fillRect(0, 0, WIDTH, HEIGHT);
 
         handler.render(g);

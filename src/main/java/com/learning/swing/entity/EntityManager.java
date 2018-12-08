@@ -16,11 +16,13 @@ public class EntityManager {
     private Player player;
     private List<Entity> entities;
     private HUD hud;
+    private List<HealthPowerUp> powerUps;
 
     public EntityManager() {
         player = new Player(Game.WIDTH / 2 - 32, Game.HEIGHT / 2 - 32, ID.Player);
         hud = new HUD(player);
         entities = new ArrayList<>();
+        powerUps = new ArrayList<>();
     }
 
     public void tick() {
@@ -40,6 +42,9 @@ public class EntityManager {
         }
 
         hud.render(g);
+        for (HealthPowerUp h : powerUps) {
+            h.render(g);
+        }
     }
 
     private void checkForCollisions() {
@@ -53,14 +58,22 @@ public class EntityManager {
                 }
             } else if (entity.getId() != ID.Trail) {
                 if (player.getBounds().intersects(entity.getBounds())) {
-                    hud.decrementHealth();
+                    player.decrementHealth();
                 }
+            }
+        }
+
+        for (int i = 0; i < powerUps.size(); i++) {
+            HealthPowerUp powerUp = powerUps.get(i);
+            if (player.getBounds().intersects(powerUp.getBounds())) {
+                player.incrementHealthBy(10);
+                removePowerUp(powerUp);
             }
         }
     }
 
-    public void createPlayer() {
-        this.player = new Player(Game.WIDTH / 2 - 32, Game.HEIGHT / 2 - 32, ID.Player);
+    private void removePowerUp(HealthPowerUp powerUp) {
+        powerUps.remove(powerUp);
     }
 
     public void createNewBasicEnemy() {
@@ -89,6 +102,10 @@ public class EntityManager {
 
     public void createNewBossEnemyBullet(double x, double y) {
         entities.add(new BossEnemyBullet(x, y, ID.BasicEnemy, this));
+    }
+
+    public void createHealthPowerUp() {
+        powerUps.add(new HealthPowerUp(Entity.clamp(R.nextInt(Game.WIDTH), 0, Game.WIDTH - HealthPowerUp.SIZE), Entity.clamp(R.nextInt(Game.HEIGHT), 0, Game.HEIGHT - HealthPowerUp.SIZE)));
     }
 
     public void clearAll() {
