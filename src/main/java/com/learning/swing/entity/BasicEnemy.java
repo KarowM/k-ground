@@ -5,20 +5,15 @@ import com.learning.swing.Game;
 import java.awt.*;
 
 public class BasicEnemy extends Entity {
-
     private static final int SIZE = 16;
     private EntityManager entityManager;
 
     BasicEnemy(double x, double y, EntityManager entityManager) {
-        super(x, y);
+        super(x, y, SIZE, SIZE);
         this.entityManager = entityManager;
 
         velX = 5;
         velY = 5;
-    }
-
-    public Rectangle getBounds() {
-        return new Rectangle((int) x, (int) y, SIZE, SIZE);
     }
 
     @Override

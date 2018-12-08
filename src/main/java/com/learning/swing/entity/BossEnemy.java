@@ -15,15 +15,11 @@ public class BossEnemy extends Entity {
     private int movementTimer = 600;
 
     BossEnemy(double x, double y, EntityManager entityManager) {
-        super(x, y);
+        super(x, y, SIZE, SIZE);
         this.entityManager = entityManager;
 
         velX = 0;
         velY = 0;
-    }
-
-    public Rectangle getBounds() {
-        return new Rectangle((int) x, (int) y, SIZE, SIZE);
     }
 
     @Override

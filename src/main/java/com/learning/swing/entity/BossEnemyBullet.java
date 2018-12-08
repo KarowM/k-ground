@@ -12,15 +12,11 @@ public class BossEnemyBullet extends Entity {
     private Random R = new Random();
 
     BossEnemyBullet(double x, double y, EntityManager entityManager) {
-        super(x, y);
+        super(x, y, SIZE, SIZE);
         this.entityManager = entityManager;
 
         velX = R.nextInt(5 + 1 + 5) - 5;
         velY = 5;
-    }
-
-    public Rectangle getBounds() {
-        return new Rectangle((int) x, (int) y, SIZE, SIZE);
     }
 
     @Override

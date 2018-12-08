@@ -9,13 +9,9 @@ public class SmartEnemy extends Entity {
     private EntityManager entityManager;
 
     SmartEnemy(double x, double y, EntityManager entityManager) {
-        super(x, y);
+        super(x, y, SIZE, SIZE);
         this.entityManager = entityManager;
         this.player = entityManager.getPlayer();
-    }
-
-    public Rectangle getBounds() {
-        return new Rectangle((int) x, (int) y, SIZE, SIZE);
     }
 
     @Override

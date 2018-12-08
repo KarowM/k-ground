@@ -7,15 +7,12 @@ public class Trail extends Entity {
     private float alpha = 1;
     private Color color;
     private EntityManager entityManager;
-    private int width, height;
     private double life;
 
     Trail(double x, double y, Color color, int width, int height, double life, EntityManager entityManager) {
-        super(x, y);
+        super(x, y, width, height);
         this.color = color;
         this.entityManager = entityManager;
-        this.width = width;
-        this.height = height;
         this.life = life;
     }
 
@@ -41,10 +38,6 @@ public class Trail extends Entity {
     private AlphaComposite makeTransparent(float alpha) {
         int type = AlphaComposite.SRC_OVER;
         return (AlphaComposite.getInstance(type, alpha));
-    }
-
-    public Rectangle getBounds() {
-        return new Rectangle((int) x, (int) y, width, height);
     }
 
     @Override
