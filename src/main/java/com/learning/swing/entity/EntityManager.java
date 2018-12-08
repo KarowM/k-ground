@@ -62,6 +62,18 @@ public class EntityManager {
                 }
             }
         }
+
+        for (int i = 0; i < powerUps.size(); i++) {
+            HealthPowerUp powerUp = powerUps.get(i);
+            if (player.getBounds().intersects(powerUp.getBounds())) {
+                hud.incrementHealthBy(30);
+                removePowerUp(powerUp);
+            }
+        }
+    }
+
+    private void removePowerUp(HealthPowerUp powerUp) {
+        powerUps.remove(powerUp);
     }
 
     public void createPlayer() {

@@ -39,4 +39,8 @@ public class HUD {
         g.drawString("Score: " + score, 10, 64);
         g.drawString("Level: " + level, 10, 80);
     }
+
+    public void incrementHealthBy(int health) {
+        player.incrementHealthBy(health);
+    }
 }

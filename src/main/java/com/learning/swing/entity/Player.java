@@ -50,4 +50,8 @@ public class Player extends Entity {
     public double getHealth() {
         return currentHealth;
     }
+
+    public void incrementHealthBy(int health) {
+        currentHealth += health;
+    }
 }
