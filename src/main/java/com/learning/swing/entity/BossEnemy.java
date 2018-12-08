@@ -15,7 +15,7 @@ public class BossEnemy extends Entity {
     private int entranceTimer = 160;
     private int movementTimer = 600;
 
-    BossEnemy(int x, int y, ID id, EntityManager entityManager) {
+    BossEnemy(double x, double y, ID id, EntityManager entityManager) {
         super(x, y, id);
         this.entityManager = entityManager;
 

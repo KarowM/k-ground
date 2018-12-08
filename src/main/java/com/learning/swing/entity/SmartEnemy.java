@@ -10,7 +10,7 @@ public class SmartEnemy extends Entity {
     private final Player player;
     private EntityManager entityManager;
 
-    SmartEnemy(int x, int y, ID id, EntityManager entityManager) {
+    SmartEnemy(double x, double y, ID id, EntityManager entityManager) {
         super(x, y, id);
         this.entityManager = entityManager;
         this.player = entityManager.getPlayer();

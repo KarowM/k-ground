@@ -20,7 +20,7 @@ public class EntityManager {
     public EntityManager() {
         player = new Player(Game.WIDTH / 2 - 32, Game.HEIGHT / 2 - 32, ID.Player);
         hud = new HUD(player);
-        entities = new ArrayList<Entity>();
+        entities = new ArrayList<>();
     }
 
     public void tick() {
@@ -88,7 +88,7 @@ public class EntityManager {
     }
 
     public void createNewBossEnemyBullet(double x, double y) {
-        entities.add(new BossEnemyBullet((int) x, (int) y, ID.BasicEnemy, this));
+        entities.add(new BossEnemyBullet(x, y, ID.BasicEnemy, this));
     }
 
     public void clearAll() {

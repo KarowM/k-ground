@@ -10,7 +10,7 @@ public class BasicEnemy extends Entity {
     private static final int SIZE = 16;
     private EntityManager entityManager;
 
-    BasicEnemy(int x, int y, ID id, EntityManager entityManager) {
+    BasicEnemy(double x, double y, ID id, EntityManager entityManager) {
         super(x, y, id);
         this.entityManager = entityManager;
 

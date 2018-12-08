@@ -12,7 +12,7 @@ public class BossEnemyBullet extends Entity {
     private EntityManager entityManager;
     private Random R = new Random();
 
-    BossEnemyBullet(int x, int y, ID id, EntityManager entityManager) {
+    BossEnemyBullet(double x, double y, ID id, EntityManager entityManager) {
         super(x, y, id);
         this.entityManager = entityManager;
 
