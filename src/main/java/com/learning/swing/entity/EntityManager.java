@@ -49,17 +49,8 @@ public class EntityManager {
 
     private void checkForCollisions() {
         for (int i = 0; i < entities.size(); i++) {
-            Entity entity = entities.get(i);
-
-            if (entity.getId() == ID.SmartEnemy) {
-                if (player.getBounds().intersects(entity.getBounds())) {
-                    player.freeze();
-                    removeEntity(entity);
-                }
-            } else if (entity.getId() != ID.Trail) {
-                if (player.getBounds().intersects(entity.getBounds())) {
-                    player.decrementHealth();
-                }
+            if (player.getBounds().intersects(entities.get(i).getBounds())) {
+                entities.get(i).collideWithPlayer(player, this);
             }
         }
 

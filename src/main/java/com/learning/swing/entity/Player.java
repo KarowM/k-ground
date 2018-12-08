@@ -38,6 +38,11 @@ public class Player extends Entity {
         return new Rectangle((int) x, (int) y, 83, 54);
     }
 
+    @Override
+    public void collideWithPlayer(Player player, EntityManager entityManager) {
+        // intentionally empty
+    }
+
     public void freeze() {
         timeLeftFrozen = 50;
     }

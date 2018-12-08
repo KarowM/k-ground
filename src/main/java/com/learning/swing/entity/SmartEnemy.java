@@ -20,6 +20,12 @@ public class SmartEnemy extends Entity {
         return new Rectangle((int) x, (int) y, SIZE, SIZE);
     }
 
+    @Override
+    public void collideWithPlayer(Player player, EntityManager entityManager) {
+        player.freeze();
+        entityManager.removeEntity(this);
+    }
+
     public void tick() {
         x += velX;
         y += velY;

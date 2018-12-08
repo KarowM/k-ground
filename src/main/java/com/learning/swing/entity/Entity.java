@@ -32,6 +32,8 @@ public abstract class Entity {
 
     public abstract Rectangle getBounds();
 
+    public abstract void collideWithPlayer(Player player, EntityManager entityManager);
+
     public double getX() {
         return x;
     }

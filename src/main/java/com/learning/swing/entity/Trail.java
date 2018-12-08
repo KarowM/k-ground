@@ -46,6 +46,11 @@ public class Trail extends Entity {
     }
 
     public Rectangle getBounds() {
-        return null;
+        return new Rectangle((int) x, (int) y, width, height);
+    }
+
+    @Override
+    public void collideWithPlayer(Player player, EntityManager entityManager) {
+        // intentionally empty
     }
 }

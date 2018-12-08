@@ -22,6 +22,11 @@ public class BasicEnemy extends Entity {
         return new Rectangle((int) x, (int) y, SIZE, SIZE);
     }
 
+    @Override
+    public void collideWithPlayer(Player player, EntityManager entityManager) {
+        player.decrementHealth();
+    }
+
     public void tick() {
         x = clamp(x + velX, 0, Game.WIDTH - SIZE);
         y = clamp(y + velY, 0, Game.HEIGHT - SIZE);

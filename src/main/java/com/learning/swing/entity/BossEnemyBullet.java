@@ -24,6 +24,11 @@ public class BossEnemyBullet extends Entity {
         return new Rectangle((int) x, (int) y, SIZE, SIZE);
     }
 
+    @Override
+    public void collideWithPlayer(Player player, EntityManager entityManager) {
+        player.decrementHealth();
+    }
+
     public void tick() {
         x += velX;
         y += velY;
