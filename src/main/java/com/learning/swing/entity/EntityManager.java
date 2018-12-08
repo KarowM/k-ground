@@ -97,7 +97,7 @@ public class EntityManager {
     }
 
     public void createHealthPowerUp() {
-        powerUps.add(new HealthPowerUp(R.nextInt(Game.WIDTH), R.nextInt(Game.HEIGHT)));
+        powerUps.add(new HealthPowerUp(Entity.clamp(R.nextInt(Game.WIDTH), 0, Game.WIDTH - HealthPowerUp.SIZE), Entity.clamp(R.nextInt(Game.HEIGHT), 0, Game.HEIGHT - HealthPowerUp.SIZE)));
     }
 
     public void clearAll() {

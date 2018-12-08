@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class HealthPowerUp {
 
-    private static final int SIZE = 12;
+    public static final int SIZE = 12;
     private double x;
     private double y;
 
@@ -18,7 +18,7 @@ public class HealthPowerUp {
     }
 
     public void render(Graphics g) {
-        g.setColor(Color.GREEN);
+        g.setColor(Color.YELLOW);
         g.fillRect((int) x, (int) y, SIZE, SIZE);
     }
 }
