@@ -18,7 +18,6 @@ public class HealthPowerUp {
         this.y = y;
 
         String path = new File("src/main/resources/heart.png").getAbsolutePath();
-
         try {
             img = ImageIO.read(new File(path));
         } catch (IOException e) {}
