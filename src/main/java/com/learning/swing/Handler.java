@@ -21,6 +21,7 @@ public class Handler {
         score++;
 
         if (score % 100 == 0 && !isBossLevel) {
+            entityManager.createHealthPowerUp();
             entityManager.createNewBasicEnemy();
         }
         if (score % 400 == 0 && !isBossLevel) {

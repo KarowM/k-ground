@@ -16,11 +16,13 @@ public class EntityManager {
     private Player player;
     private List<Entity> entities;
     private HUD hud;
+    private List<HealthPowerUp> powerUps;
 
     public EntityManager() {
         player = new Player(Game.WIDTH / 2 - 32, Game.HEIGHT / 2 - 32, ID.Player);
         hud = new HUD(player);
         entities = new ArrayList<>();
+        powerUps = new ArrayList<>();
     }
 
     public void tick() {
@@ -40,6 +42,9 @@ public class EntityManager {
         }
 
         hud.render(g);
+        for (HealthPowerUp h : powerUps) {
+            h.render(g);
+        }
     }
 
     private void checkForCollisions() {
@@ -89,6 +94,10 @@ public class EntityManager {
 
     public void createNewBossEnemyBullet(double x, double y) {
         entities.add(new BossEnemyBullet(x, y, ID.BasicEnemy, this));
+    }
+
+    public void createHealthPowerUp() {
+        powerUps.add(new HealthPowerUp(R.nextInt(Game.WIDTH), R.nextInt(Game.HEIGHT)));
     }
 
     public void clearAll() {
