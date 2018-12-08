@@ -7,12 +7,11 @@ import java.util.Random;
 
 public class BossEnemyBullet extends Entity {
 
-    private static final int SIZE = 16;
     private EntityManager entityManager;
     private Random R = new Random();
 
     BossEnemyBullet(double x, double y, EntityManager entityManager) {
-        super(x, y, SIZE, SIZE);
+        super(x, y, 16, 16);
         this.entityManager = entityManager;
 
         velX = R.nextInt(5 + 1 + 5) - 5;
@@ -35,6 +34,6 @@ public class BossEnemyBullet extends Entity {
 
     public void render(Graphics g) {
         g.setColor(Color.GRAY);
-        g.fillRect((int) x, (int) y, SIZE, SIZE);
+        g.fillRect((int) x, (int) y, width, height);
     }
 }

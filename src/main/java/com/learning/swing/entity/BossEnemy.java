@@ -6,9 +6,8 @@ import java.awt.*;
 import java.util.Random;
 
 public class BossEnemy extends Entity {
-
-    static final int SIZE = 96;
     private static final Random R = new Random();
+    public static final int SIZE = 96;
     private EntityManager entityManager;
 
     private int entranceTimer = 160;
@@ -49,17 +48,17 @@ public class BossEnemy extends Entity {
         if (movementTimer <= 250) {
             int spawn = R.nextInt(10);
             if (spawn < 2) {
-                entityManager.createNewBossEnemyBullet(x + SIZE / 2, y + SIZE);
+                entityManager.createNewBossEnemyBullet(x + width / 2, y + height);
             }
         }
 
-        if (x <= 0 || x >= Game.WIDTH - SIZE) {
+        if (x <= 0 || x >= Game.WIDTH - width) {
             velX *= -1;
         }
     }
 
     public void render(Graphics g) {
         g.setColor(Color.DARK_GRAY);
-        g.fillRect((int) x, (int) y, SIZE, SIZE);
+        g.fillRect((int) x, (int) y, width, height);
     }
 }
