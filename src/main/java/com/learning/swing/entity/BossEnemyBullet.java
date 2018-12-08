@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class BossEnemyBullet extends Entity {
 
-    private static final int ENEMY_SIZE = 16;
+    private static final int SIZE = 16;
     private EntityManager entityManager;
     private Random R = new Random();
 
@@ -21,7 +21,7 @@ public class BossEnemyBullet extends Entity {
     }
 
     public Rectangle getBounds() {
-        return new Rectangle((int) x, (int) y, ENEMY_SIZE, ENEMY_SIZE);
+        return new Rectangle((int) x, (int) y, SIZE, SIZE);
     }
 
     public void tick() {
@@ -35,6 +35,6 @@ public class BossEnemyBullet extends Entity {
 
     public void render(Graphics g) {
         g.setColor(Color.GRAY);
-        g.fillRect((int) x, (int) y, ENEMY_SIZE, ENEMY_SIZE);
+        g.fillRect((int) x, (int) y, SIZE, SIZE);
     }
 }

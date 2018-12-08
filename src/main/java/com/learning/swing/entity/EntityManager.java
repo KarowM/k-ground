@@ -84,7 +84,7 @@ public class EntityManager {
     }
 
     public void createNewEnemyBoss() {
-        entities.add(new BossEnemy((Game.WIDTH / 2) - BossEnemy.BOSS_SIZE / 2, -BossEnemy.BOSS_SIZE, ID.BossEnemy, this));
+        entities.add(new BossEnemy((Game.WIDTH / 2) - BossEnemy.SIZE / 2, -BossEnemy.SIZE, ID.BossEnemy, this));
     }
 
     public void createNewBossEnemyBullet(double x, double y) {

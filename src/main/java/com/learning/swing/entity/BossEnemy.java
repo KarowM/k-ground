@@ -8,14 +8,14 @@ import java.util.Random;
 
 public class BossEnemy extends Entity {
 
-    public static final int BOSS_SIZE = 96;
+    static final int SIZE = 96;
     private static final Random R = new Random();
     private EntityManager entityManager;
 
     private int entranceTimer = 160;
     private int movementTimer = 600;
 
-    public BossEnemy(int x, int y, ID id, EntityManager entityManager) {
+    BossEnemy(int x, int y, ID id, EntityManager entityManager) {
         super(x, y, id);
         this.entityManager = entityManager;
 
@@ -24,7 +24,7 @@ public class BossEnemy extends Entity {
     }
 
     public Rectangle getBounds() {
-        return new Rectangle((int) x, (int) y, BOSS_SIZE, BOSS_SIZE);
+        return new Rectangle((int) x, (int) y, SIZE, SIZE);
     }
 
     public void tick() {
@@ -49,17 +49,17 @@ public class BossEnemy extends Entity {
         if (movementTimer <= 250) {
             int spawn = R.nextInt(10);
             if (spawn < 2) {
-                entityManager.createNewBossEnemyBullet(x + BOSS_SIZE / 2, y + BOSS_SIZE);
+                entityManager.createNewBossEnemyBullet(x + SIZE / 2, y + SIZE);
             }
         }
 
-        if (x <= 0 || x >= Game.WIDTH - BOSS_SIZE) {
+        if (x <= 0 || x >= Game.WIDTH - SIZE) {
             velX *= -1;
         }
     }
 
     public void render(Graphics g) {
         g.setColor(Color.DARK_GRAY);
-        g.fillRect((int) x, (int) y, BOSS_SIZE, BOSS_SIZE);
+        g.fillRect((int) x, (int) y, SIZE, SIZE);
     }
 }
