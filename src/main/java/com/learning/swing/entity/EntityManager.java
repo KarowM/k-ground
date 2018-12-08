@@ -58,7 +58,7 @@ public class EntityManager {
                 }
             } else if (entity.getId() != ID.Trail) {
                 if (player.getBounds().intersects(entity.getBounds())) {
-                    hud.decrementHealth();
+                    player.decrementHealth();
                 }
             }
         }
@@ -66,7 +66,7 @@ public class EntityManager {
         for (int i = 0; i < powerUps.size(); i++) {
             HealthPowerUp powerUp = powerUps.get(i);
             if (player.getBounds().intersects(powerUp.getBounds())) {
-                hud.incrementHealthBy(30);
+                player.incrementHealthBy(10);
                 removePowerUp(powerUp);
             }
         }
@@ -74,10 +74,6 @@ public class EntityManager {
 
     private void removePowerUp(HealthPowerUp powerUp) {
         powerUps.remove(powerUp);
-    }
-
-    public void createPlayer() {
-        this.player = new Player(Game.WIDTH / 2 - 32, Game.HEIGHT / 2 - 32, ID.Player);
     }
 
     public void createNewBasicEnemy() {

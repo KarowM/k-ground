@@ -52,6 +52,6 @@ public class Player extends Entity {
     }
 
     public void incrementHealthBy(int health) {
-        currentHealth += health;
+        currentHealth = Entity.clamp(currentHealth + health, 0, 100);
     }
 }

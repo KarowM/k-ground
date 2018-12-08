@@ -19,6 +19,6 @@ public class HealthPowerUp {
 
     public void render(Graphics g) {
         g.setColor(Color.YELLOW);
-        g.fillRect((int) x, (int) y, SIZE, SIZE);
+        g.fillOval((int) x, (int) y, SIZE, SIZE);
     }
 }

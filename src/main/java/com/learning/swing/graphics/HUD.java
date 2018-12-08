@@ -16,10 +16,6 @@ public class HUD {
         this.player = player;
     }
 
-    public void decrementHealth() {
-        player.decrementHealth();
-    }
-
     public void tick() {
         greenValue = Entity.clamp(player.getHealth() * 2, 0, 255);
         score++;
@@ -38,9 +34,5 @@ public class HUD {
 
         g.drawString("Score: " + score, 10, 64);
         g.drawString("Level: " + level, 10, 80);
-    }
-
-    public void incrementHealthBy(int health) {
-        player.incrementHealthBy(health);
     }
 }

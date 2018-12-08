@@ -14,7 +14,6 @@ public class Handler {
         this.entityManager = entityManager;
 
         isBossLevel = false;
-        entityManager.createPlayer();
     }
 
     public void tick() {
