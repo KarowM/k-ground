@@ -5,7 +5,6 @@ import com.learning.swing.utils.ID;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
@@ -23,12 +22,14 @@ public class Player extends Entity {
         String path = new File("src/main/resources/spaceship.png").getAbsolutePath();
         try {
             normal = ImageIO.read(new File(path));
-        } catch (IOException e) {}
+        } catch (IOException e) {
+        }
 
         path = new File("src/main/resources/spaceshipFrozen.png").getAbsolutePath();
         try {
             frozen = ImageIO.read(new File(path));
-        } catch (IOException e) {}
+        } catch (IOException e) {
+        }
 
         imageInUse = normal;
     }
