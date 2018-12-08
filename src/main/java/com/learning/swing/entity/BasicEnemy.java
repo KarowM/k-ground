@@ -5,39 +5,39 @@ import com.learning.swing.utils.ID;
 
 import java.awt.*;
 
-public class BasicEnemy extends GameObject {
+public class BasicEnemy extends Entity {
 
-    public static final int ENEMY_SIZE = 16;
-    private Spawner spawner;
+    private static final int SIZE = 16;
+    private EntityManager entityManager;
 
-    public BasicEnemy(int x, int y, ID id, Spawner spawner) {
+    BasicEnemy(double x, double y, ID id, EntityManager entityManager) {
         super(x, y, id);
-        this.spawner = spawner;
+        this.entityManager = entityManager;
 
         velX = 5;
         velY = 5;
     }
 
     public Rectangle getBounds() {
-        return new Rectangle((int) x, (int) y, ENEMY_SIZE, ENEMY_SIZE);
+        return new Rectangle((int) x, (int) y, SIZE, SIZE);
     }
 
     public void tick() {
-        x = clamp(x + velX, 0, Game.WIDTH - ENEMY_SIZE);
-        y = clamp(y + velY, 0, Game.HEIGHT - ENEMY_SIZE);
+        x = clamp(x + velX, 0, Game.WIDTH - SIZE);
+        y = clamp(y + velY, 0, Game.HEIGHT - SIZE);
 
-        if (y == 0 || y == Game.HEIGHT - ENEMY_SIZE) {
+        if (y == 0 || y == Game.HEIGHT - SIZE) {
             velY *= -1;
         }
-        if (x == 0 || x == Game.WIDTH - ENEMY_SIZE) {
+        if (x == 0 || x == Game.WIDTH - SIZE) {
             velX *= -1;
         }
 
-        spawner.addObject(new Trail(x, y, ID.Trail, Color.RED, ENEMY_SIZE, ENEMY_SIZE, 0.05, spawner));
+        entityManager.addEntity(new Trail(x, y, ID.Trail, Color.RED, SIZE, SIZE, 0.05, entityManager));
     }
 
     public void render(Graphics g) {
         g.setColor(Color.RED);
-        g.fillRect((int) x, (int) y, ENEMY_SIZE, ENEMY_SIZE);
+        g.fillRect((int) x, (int) y, SIZE, SIZE);
     }
 }

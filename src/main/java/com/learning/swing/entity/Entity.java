@@ -4,13 +4,13 @@ import com.learning.swing.utils.ID;
 
 import java.awt.*;
 
-public abstract class GameObject {
+public abstract class Entity {
 
     protected double x, y;
     protected double velX, velY;
     protected ID id;
 
-    public GameObject(double x, double y, ID id) {
+    public Entity(double x, double y, ID id) {
         this.x = x;
         this.y = y;
         this.id = id;
@@ -36,28 +36,12 @@ public abstract class GameObject {
         return x;
     }
 
-    public void setX(double x) {
-        this.x = x;
-    }
-
     public double getY() {
         return y;
     }
 
-    public void setY(double y) {
-        this.y = y;
-    }
-
-    public double getVelX() {
-        return velX;
-    }
-
     public void setVelX(double velX) {
         this.velX = velX;
-    }
-
-    public double getVelY() {
-        return velY;
     }
 
     public void setVelY(int velY) {
@@ -66,13 +50,5 @@ public abstract class GameObject {
 
     public ID getId() {
         return id;
-    }
-
-    public void setId(ID id) {
-        this.id = id;
-    }
-
-    public void goUp() {
-        y--;
     }
 }

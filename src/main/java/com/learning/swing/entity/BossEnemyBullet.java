@@ -6,22 +6,22 @@ import com.learning.swing.utils.ID;
 import java.awt.*;
 import java.util.Random;
 
-public class BossEnemyBullet extends GameObject {
+public class BossEnemyBullet extends Entity {
 
-    public static final int ENEMY_SIZE = 16;
-    private Spawner spawner;
+    private static final int SIZE = 16;
+    private EntityManager entityManager;
     private Random R = new Random();
 
-    public BossEnemyBullet(int x, int y, ID id, Spawner spawner) {
+    BossEnemyBullet(double x, double y, ID id, EntityManager entityManager) {
         super(x, y, id);
-        this.spawner = spawner;
+        this.entityManager = entityManager;
 
         velX = R.nextInt(5 + 1 + 5) - 5;
         velY = 5;
     }
 
     public Rectangle getBounds() {
-        return new Rectangle((int) x, (int) y, ENEMY_SIZE, ENEMY_SIZE);
+        return new Rectangle((int) x, (int) y, SIZE, SIZE);
     }
 
     public void tick() {
@@ -29,12 +29,12 @@ public class BossEnemyBullet extends GameObject {
         y += velY;
 
         if (y >= Game.HEIGHT || x >= Game.WIDTH) {
-            spawner.removeObject(this);
+            entityManager.removeEntity(this);
         }
     }
 
     public void render(Graphics g) {
         g.setColor(Color.GRAY);
-        g.fillRect((int) x, (int) y, ENEMY_SIZE, ENEMY_SIZE);
+        g.fillRect((int) x, (int) y, SIZE, SIZE);
     }
 }
