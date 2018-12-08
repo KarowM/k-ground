@@ -3,8 +3,11 @@ package com.learning.swing;
 import com.learning.swing.entity.EntityManager;
 
 import java.awt.*;
+import java.util.Random;
 
 public class Handler {
+    private final static Random R = new Random();
+
     private EntityManager entityManager;
 
     private int score = 0;
@@ -20,7 +23,6 @@ public class Handler {
         score++;
 
         if (score % 100 == 0 && !isBossLevel) {
-            entityManager.createHealthPowerUp();
             entityManager.createNewBasicEnemy();
         }
         if (score % 400 == 0 && !isBossLevel) {
@@ -30,6 +32,10 @@ public class Handler {
             entityManager.clearAll();
             isBossLevel = true;
             entityManager.createNewEnemyBoss();
+        }
+
+        if (R.nextInt(200) == 1) {
+            entityManager.createHealthPowerUp();
         }
 
         entityManager.tick();
