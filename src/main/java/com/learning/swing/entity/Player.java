@@ -1,7 +1,6 @@
 package com.learning.swing.entity;
 
 import com.learning.swing.Game;
-import com.learning.swing.utils.ID;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -17,8 +16,8 @@ public class Player extends Entity {
 
     private int timeLeftFrozen = 0;
 
-    public Player(double x, double y, ID id) {
-        super(x, y, id);
+    public Player(double x, double y) {
+        super(x, y, 83, 54);
         String path = new File("src/main/resources/spaceship.png").getAbsolutePath();
         try {
             normal = ImageIO.read(new File(path));
@@ -34,8 +33,9 @@ public class Player extends Entity {
         imageInUse = normal;
     }
 
-    public Rectangle getBounds() {
-        return new Rectangle((int) x, (int) y, 83, 54);
+    @Override
+    public void collideWithPlayer(Player player, EntityManager entityManager) {
+        // intentionally empty
     }
 
     public void freeze() {
@@ -50,8 +50,8 @@ public class Player extends Entity {
         }
 
         if (timeLeftFrozen == 0) {
-            x = clamp(x + velX, 0, Game.WIDTH - 83);
-            y = clamp(y + velY, 0, Game.HEIGHT - 54);
+            x = clamp(x + velX, 0, Game.WIDTH - width);
+            y = clamp(y + velY, 0, Game.HEIGHT - height);
 
             imageInUse = normal;
         } else {

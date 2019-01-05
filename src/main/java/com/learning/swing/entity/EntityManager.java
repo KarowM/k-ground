@@ -2,7 +2,6 @@ package com.learning.swing.entity;
 
 import com.learning.swing.Game;
 import com.learning.swing.graphics.HUD;
-import com.learning.swing.utils.ID;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -19,7 +18,7 @@ public class EntityManager {
     private List<HealthPowerUp> powerUps;
 
     public EntityManager() {
-        player = new Player(Game.WIDTH / 2 - 32, Game.HEIGHT / 2 - 32, ID.Player);
+        player = new Player(Game.WIDTH / 2 - 32, Game.HEIGHT / 2 - 32);
         hud = new HUD(player);
         entities = new ArrayList<>();
         powerUps = new ArrayList<>();
@@ -49,17 +48,8 @@ public class EntityManager {
 
     private void checkForCollisions() {
         for (int i = 0; i < entities.size(); i++) {
-            Entity entity = entities.get(i);
-
-            if (entity.getId() == ID.SmartEnemy) {
-                if (player.getBounds().intersects(entity.getBounds())) {
-                    player.freeze();
-                    removeEntity(entity);
-                }
-            } else if (entity.getId() != ID.Trail) {
-                if (player.getBounds().intersects(entity.getBounds())) {
-                    player.decrementHealth();
-                }
+            if (player.getBounds().intersects(entities.get(i).getBounds())) {
+                entities.get(i).collideWithPlayer(player, this);
             }
         }
 
@@ -77,7 +67,7 @@ public class EntityManager {
     }
 
     public void createNewBasicEnemy() {
-        entities.add(new BasicEnemy(R.nextInt(Game.WIDTH), R.nextInt(Game.HEIGHT), ID.BasicEnemy, this));
+        entities.add(new BasicEnemy(R.nextInt(Game.WIDTH), R.nextInt(Game.HEIGHT), this));
     }
 
     public Player getPlayer() {
@@ -93,15 +83,15 @@ public class EntityManager {
     }
 
     public void createNewSmartEnemy() {
-        entities.add(new SmartEnemy(R.nextInt(Game.WIDTH), R.nextInt(Game.HEIGHT), ID.SmartEnemy, this));
+        entities.add(new SmartEnemy(R.nextInt(Game.WIDTH), R.nextInt(Game.HEIGHT), this));
     }
 
     public void createNewEnemyBoss() {
-        entities.add(new BossEnemy((Game.WIDTH / 2) - BossEnemy.SIZE / 2, -BossEnemy.SIZE, ID.BossEnemy, this));
+        entities.add(new BossEnemy((Game.WIDTH / 2) - BossEnemy.SIZE / 2, -BossEnemy.SIZE, this));
     }
 
     public void createNewBossEnemyBullet(double x, double y) {
-        entities.add(new BossEnemyBullet(x, y, ID.BasicEnemy, this));
+        entities.add(new BossEnemyBullet(x, y, this));
     }
 
     public void createHealthPowerUp() {

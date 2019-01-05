@@ -1,19 +1,17 @@
 package com.learning.swing.entity;
 
-import com.learning.swing.utils.ID;
-
 import java.awt.*;
 
 public abstract class Entity {
-
+    protected int width, height;
     protected double x, y;
     protected double velX, velY;
-    protected ID id;
 
-    public Entity(double x, double y, ID id) {
+    public Entity(double x, double y, int width, int height) {
         this.x = x;
         this.y = y;
-        this.id = id;
+        this.width = width;
+        this.height = height;
     }
 
     public static double clamp(double var, int min, int max) {
@@ -26,11 +24,15 @@ public abstract class Entity {
         return var;
     }
 
+    public Rectangle getBounds() {
+        return new Rectangle((int) x, (int) y, width, height);
+    }
+
     public abstract void tick();
 
     public abstract void render(Graphics g);
 
-    public abstract Rectangle getBounds();
+    public abstract void collideWithPlayer(Player player, EntityManager entityManager);
 
     public double getX() {
         return x;
@@ -48,7 +50,11 @@ public abstract class Entity {
         this.velY = velY;
     }
 
-    public ID getId() {
-        return id;
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
     }
 }

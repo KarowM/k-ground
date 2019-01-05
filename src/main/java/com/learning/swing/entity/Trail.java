@@ -1,7 +1,5 @@
 package com.learning.swing.entity;
 
-import com.learning.swing.utils.ID;
-
 import java.awt.*;
 
 public class Trail extends Entity {
@@ -9,15 +7,12 @@ public class Trail extends Entity {
     private float alpha = 1;
     private Color color;
     private EntityManager entityManager;
-    private int width, height;
     private double life;
 
-    Trail(double x, double y, ID id, Color color, int width, int height, double life, EntityManager entityManager) {
-        super(x, y, id);
+    Trail(double x, double y, Color color, int width, int height, double life, EntityManager entityManager) {
+        super(x, y, width, height);
         this.color = color;
         this.entityManager = entityManager;
-        this.width = width;
-        this.height = height;
         this.life = life;
     }
 
@@ -45,7 +40,8 @@ public class Trail extends Entity {
         return (AlphaComposite.getInstance(type, alpha));
     }
 
-    public Rectangle getBounds() {
-        return null;
+    @Override
+    public void collideWithPlayer(Player player, EntityManager entityManager) {
+        // intentionally empty
     }
 }
